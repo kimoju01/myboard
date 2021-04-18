@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+	  xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+	  layout:decorator="layout/default">
+  <head>
+    <title>Board</title>
+  </head>
+  <th:block layout:fragment="content">
+	  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
+
+		  <section class="hero-wrap hero-wrap-2" style="background-image: url('images/destination-single.jpg');" data-stellar-background-ratio="0.5">
+		  <div class="overlay"></div>
+		  <div class="container">
+			<div class="row no-gutters slider-text align-items-end justify-content-start">
+			  <div class="col-md-9 ftco-animate pb-4">
+				<h1 class="mb-3 bread">BOARD</h1>
+				 <p class="breadcrumbs"><span class="mr-2"><a th:href="@{/index}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span>Board <i class="ion-ios-arrow-forward"></i></span></p>
+			  </div>
+			</div>
+		  </div>
+		</section>
+
+		<section class="ftco-section">
+			<div class="container">
+				<div>
+					<a th:href="@{/post}" class="btn btn-primary py-3 px-5" style="
+			  			display: inline-block; margin-bottom: 30px;">write</a>
+				</div>
+				<div class="row">
+					<div class="col-lg-9 pr-lg-4">
+						<div class="row">
+							<div th:each="board : ${boardList}">
+								<div class="col-md-6 col-lg-4 d-flex ftco-animate">
+									<div class="blog-entry justify-content-end">
+										<a th:href="@{'/post/' + ${board.id}}" class="block-20" style="background-image: url('images/image_1.jpg');">
+										</a>
+										<div class="text float-right d-block">
+											<div class="d-flex align-items-center pt-2 mb-4 topp">
+												<div class="one mr-2">
+													<span class="day">12</span>
+												</div>
+												<div class="two">
+													<span class="yr">2019</span>
+													<span class="mos">april</span>
+												</div>
+											</div>
+											<h3 class="heading"><a th:href="@{'/post/' + ${board.id}}"><span th:text="${board.title}"></span></a></h3>
+											<div class="d-flex align-items-center mt-4 meta">
+												<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+												<p class="ml-auto mb-0">
+													<a href="#" class="mr-2"><span th:text="${board.writer}"></span></a>
+													<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+												</p>
+											</div>
+										</div>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="row mt-5">
+					  <div class="col text-center">
+						<div class="block-27">
+						  <ul>
+							<li><a href="#">&lt;</a></li>
+							<li class="active"><span>1</span></li>
+							<li><a href="#">2</a></li>
+							<li><a href="#">3</a></li>
+							<li><a href="#">4</a></li>
+							<li><a href="#">5</a></li>
+							<li><a href="#">&gt;</a></li>
+						  </ul>
+						</div>
+					  </div>
+					</div>
+					</div> <!-- end -->
+				</div>
+			</div>
+		</section>
+	  </body>
+  </th:block>
+</html>
