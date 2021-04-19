@@ -19,7 +19,8 @@ public class BoardController {
     /* 게시글 목록 */
     @GetMapping("/board")
     public String list(Model model) {
-        List<BoardDto> boardDtoList =
+        List<BoardDto> boardList = boardService.findAll();
+        model.addAttribute("boardList", boardList);
         return "board/list.html";
     }
 

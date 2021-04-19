@@ -21,11 +21,6 @@ public class HomeController {
         return "hotel-single";
     }
 
-    @GetMapping("index")
-    public String index() {
-        return "index";
-    }
-
     @GetMapping("about")
     public String about() {
         return "about";
