@@ -24,54 +24,82 @@
 			<div class="container">
 				<div>
 					<a th:href="@{/post}" class="btn btn-primary py-3 px-5" style="
-			  			display: inline-block; margin-bottom: 30px;">write</a>
+			  			display: inline-block; margin-top: -70px; margin-bottom: 30px; margin-left: 85%">write</a>
 				</div>
 				<div class="row">
 					<div class="col-lg-9 pr-lg-4">
 						<div class="row">
-							<div th:each="board : ${boardList}">
-								<div class="col-md-6 col-lg-4 d-flex ftco-animate">
-									<div class="blog-entry justify-content-end">
-										<a th:href="@{'/post/' + ${board.id}}" class="block-20" style="background-image: url('images/image_1.jpg');">
-										</a>
-										<div class="text float-right d-block">
-											<div class="d-flex align-items-center pt-2 mb-4 topp">
-												<div class="one mr-2">
-													<span class="day">12</span>
-												</div>
-												<div class="two">
-													<span class="yr">2019</span>
-													<span class="mos">april</span>
-												</div>
+
+							<div class="col-md-6 col-lg-4 d-flex ftco-animate" th:each="board : ${boardList}">
+								<div class="blog-entry justify-content-end">
+									<a th:href="@{'/post/' + ${board.id}}" class="block-20" style="background-image: url('images/image_1.jpg');">
+									</a>
+									<div class="text float-right d-block">
+										<div class="d-flex align-items-center pt-2 mb-4 topp">
+											<div class="one mr-2">
+												<span class="day">12</span>
 											</div>
-											<h3 class="heading"><a th:href="@{'/post/' + ${board.id}}"><span th:text="${board.title}"></span></a></h3>
-											<div class="d-flex align-items-center mt-4 meta">
-												<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
-												<p class="ml-auto mb-0">
-													<a href="#" class="mr-2"><span th:text="${board.writer}"></span></a>
-													<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
-												</p>
+											<div class="two">
+												<span class="yr">2019</span>
+												<span class="mos">april</span>
 											</div>
+										</div>
+										<h3 class="heading"><a th:href="@{'/post/' + ${board.id}}"><span th:text="${board.title}"></span></a></h3>
+										<p style="width: 288px; height:79px;"><span th:text="${board.content}"></span></p>
+										<div class="d-flex align-items-center mt-4 meta">
+											<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+											<p class="ml-auto mb-0">
+												<a href="#" class="mr-2"><span th:text="${board.writer}"></span></a>
+												<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+											</p>
 										</div>
 									</div>
 								</div>
 							</div>
+<!--							<div class="col-md-6 col-lg-4 ftco-animate" th:each="board : ${boardList}">-->
+<!--								<div class="project">-->
+<!--									<div class="img">-->
+<!--										<div class="vr"><span>Sale</span></div>-->
+<!--										<a th:href="@{'/post/' + ${board.id}}"><img src="images/hotel-1.jpg" class="img-fluid" alt="Colorlib Template"></a>-->
+<!--									</div>-->
+<!--									<div class="text">-->
+<!--										<h4 class="price"><span class="old-price mr-2">$500</span>$400</h4>-->
+<!--										<span>3 nights</span>-->
+<!--										<h3><a th:href="@{'/post/' + ${board.id}}"><span th:text="${board.title}"></span></a></h3>-->
+<!--										<div class="star d-flex clearfix">-->
+<!--											<div class="mr-auto float-left">-->
+<!--												<span class="ion-ios-star"></span>-->
+<!--												<span class="ion-ios-star"></span>-->
+<!--												<span class="ion-ios-star"></span>-->
+<!--												<span class="ion-ios-star"></span>-->
+<!--												<span class="ion-ios-star"></span>-->
+<!--											</div>-->
+<!--											<div class="float-right">-->
+<!--												<span class="rate"><a href="#">(120)</a></span>-->
+<!--											</div>-->
+<!--										</div>-->
+<!--									</div>-->
+<!--									<a th:href="@{'/post/' + ${board.id}}" class="icon image-popup d-flex justify-content-center align-items-center">-->
+<!--										<span class="icon-expand"></span>-->
+<!--									</a>-->
+<!--								</div>-->
+<!--							</div>-->
 						</div>
 						<div class="row mt-5">
-					  <div class="col text-center">
-						<div class="block-27">
-						  <ul>
-							<li><a href="#">&lt;</a></li>
-							<li class="active"><span>1</span></li>
-							<li><a href="#">2</a></li>
-							<li><a href="#">3</a></li>
-							<li><a href="#">4</a></li>
-							<li><a href="#">5</a></li>
-							<li><a href="#">&gt;</a></li>
-						  </ul>
+						  <div class="col text-center">
+							<div class="block-27">
+							  <ul>
+								<li><a href="#">&lt;</a></li>
+								<li class="active"><span>1</span></li>
+								<li><a href="#">2</a></li>
+								<li><a href="#">3</a></li>
+								<li><a href="#">4</a></li>
+								<li><a href="#">5</a></li>
+								<li><a href="#">&gt;</a></li>
+							  </ul>
+							</div>
+						  </div>
 						</div>
-					  </div>
-					</div>
 					</div> <!-- end -->
 				</div>
 			</div>
