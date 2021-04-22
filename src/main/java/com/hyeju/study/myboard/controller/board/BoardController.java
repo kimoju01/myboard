@@ -3,9 +3,12 @@ package com.hyeju.study.myboard.controller.board;
 import com.hyeju.study.myboard.dto.BoardDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.AllArgsConstructor;
+import org.dom4j.rule.Mode;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import java.util.List;
@@ -35,6 +38,17 @@ public class BoardController {
         boardService.save(boardDto);
         return "redirect:/board";
     }
+
+    /* 게시글 detail */
+    @GetMapping("/post/{id}")
+    public String detail(@PathVariable("id") Long id, Model model) {
+        BoardDto boardDto = boardService.getPost(id);
+        model.addAttribute("boardDto", boardDto);
+        return "board/detail.html";
+    }
+
+    /* 게시글 삭제 */
+
 
 
 }
