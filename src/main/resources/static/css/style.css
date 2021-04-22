@@ -9704,7 +9704,7 @@ textarea.form-control {
       margin: 0 10px;
       opacity: .5; }
 
-.tagcloud a {
+.tagcloud a, button {
   text-transform: uppercase;
   display: inline-block;
   padding: 4px 10px;
@@ -9715,7 +9715,7 @@ textarea.form-control {
   border: 1px solid #f2f2f2;
   font-size: 11px;
   background: #f2f2f2; }
-  .tagcloud a:hover {
+  .tagcloud a:hover, button:hover {
     border: 1px solid #000; }
 
 .comment-form-wrap {
