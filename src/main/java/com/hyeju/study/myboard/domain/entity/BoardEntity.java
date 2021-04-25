@@ -32,4 +32,9 @@ public class BoardEntity extends TimeEntity {
         this.writer = writer;
     }
 
+    public void update(String title, String content) {
+        this.title = title;
+        this.content = content;
+    }
+
 }
