@@ -9,6 +9,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 
 @Service
 @RequiredArgsConstructor
@@ -34,6 +37,7 @@ public class BoardService {
     }
 
     /* 게시글 조회 */
+    @Transactional(readOnly = true)
     public BoardResponseDto findById(Long id) {
         BoardEntity boardEntity = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다. id=" + id));
@@ -41,4 +45,12 @@ public class BoardService {
         return new BoardResponseDto(boardEntity);
     }
 
+    /* 게시글 목록 */
+    @Transactional(readOnly = true)
+    public List<BoardResponseDto> findAll() {
+        List<BoardEntity> boardEntityList = boardRepository.findAll();
+        return boardEntityList.stream()
+                .map(boardEntity -> new BoardResponseDto(boardEntity)
+                .collect(Collectors.toList());
+    }
 }
