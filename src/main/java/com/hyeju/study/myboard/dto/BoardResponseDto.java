@@ -1,9 +1,9 @@
 package com.hyeju.study.myboard.dto;
 
 import com.hyeju.study.myboard.domain.entity.BoardEntity;
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
+
+import java.time.LocalDateTime;
 
 @Getter
 public class BoardResponseDto {
@@ -11,12 +11,16 @@ public class BoardResponseDto {
     private String title;
     private String content;
     private String writer;
+    private LocalDateTime createdDate;
+    private LocalDateTime modifiedDate;
 
     public BoardResponseDto(BoardEntity boardEntity) {
         this.id = boardEntity.getId();
         this.title = boardEntity.getTitle();
         this.content = boardEntity.getContent();
         this.writer = boardEntity.getWriter();
+        this.createdDate = boardEntity.getCreatedDate();
+        this.modifiedDate = boardEntity.getModifiedDate();
     }
 
 }
