@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit.jupiter.SpringExtension;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @SpringBootTest
@@ -40,6 +41,26 @@ class BoardRepositoryTest {
         BoardEntity boardEntity = boardEntityList.get(0);
         Assertions.assertThat(boardEntity.getTitle()).isEqualTo(title);
         Assertions.assertThat(boardEntity.getContent()).isEqualTo(content);
+
+    }
+
+    @Test
+    public void TimeEntity_등록() {
+        //given
+        LocalDateTime now = LocalDateTime.of(2021,04,26,0,0,0);
+        boardRepository.save(BoardEntity.builder()
+                .title("title")
+                .content("content")
+                .writer("writer")
+                .build());
+        //when
+        List<BoardEntity> boardEntityList = boardRepository.findAll();
+        //then
+        BoardEntity boardEntity = boardEntityList.get(0);
+        System.out.println("createDate =" + boardEntity.getCreatedDate() + ", modifiedDate =" + boardEntity.getModifiedDate());
+
+        Assertions.assertThat(boardEntity.getCreatedDate()).isAfter(now);
+        Assertions.assertThat(boardEntity.getModifiedDate()).isAfter(now);
 
     }
 
