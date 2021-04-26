@@ -25,7 +25,7 @@ public class BoardApiController {
         return boardService.update(id, requestDto);
     }
 
-    /* 게시글 조회 */
+    /* 게시글 detail */
     @GetMapping("/api/v1/post/{id}")
     public BoardResponseDto findById(@PathVariable Long id) {
         return boardService.findById(id);
