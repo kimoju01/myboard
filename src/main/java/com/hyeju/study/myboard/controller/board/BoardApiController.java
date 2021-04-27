@@ -9,24 +9,25 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController // Post-Create, Get-Read, Put-Update, Delete-Delete
 @RequiredArgsConstructor
+@RequestMapping(value = "/api/v1")
 public class BoardApiController {
 
     private final BoardService boardService;
 
     /* 게시글 등록 */
-    @PostMapping("/api/v1/post")
+    @PostMapping("/posts")
     public Long save(@RequestBody BoardSaveRequestDto requestDto) {
         return boardService.save(requestDto);
     }
 
     /* 게시글 수정 */
-    @PutMapping("/api/v1/post/{id}")
+    @PutMapping("/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody BoardUpdateRequestDto requestDto) {
         return boardService.update(id, requestDto);
     }
 
     /* 게시글 detail */
-    @GetMapping("/api/v1/post/{id}")
+    @GetMapping("/posts/{id}")
     public BoardResponseDto findById(@PathVariable Long id) {
         return boardService.findById(id);
     }
