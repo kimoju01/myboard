@@ -17,10 +17,15 @@ public class HomeController {
         return "index";
     }
 
-    @GetMapping("/board")
-    public String board(Model model) {
+    @GetMapping("/posts")
+    public String list(Model model) {
         model.addAttribute("boardList", boardService.findAll());
-        return "board";
+        return "board/list";
+    }
+
+    @GetMapping("/posts/save")
+    public String write() {
+        return "board/write";
     }
 
     @GetMapping("destination-single")
