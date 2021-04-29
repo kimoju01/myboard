@@ -3,7 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="~{layout/default}">
   <head>
-    <title th:text="${boardDto.title}"></title>
+    <title th:text="${board.title}"></title>
   </head>
   <th:block layout:fragment="content">
     <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
@@ -13,7 +13,7 @@
         <div class="container">
           <div class="row no-gutters slider-text align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-4">
-              <h1 class="mb-3 bread" th:text="${boardDto.title}"></h1>
+              <h1 class="mb-3 bread" th:text="${board.title}"></h1>
               <p class="breadcrumbs"><span class="mr-2"><a th:href="@{/}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a th:href="@{/board}">Board <i class="ion-ios-arrow-forward"></i></a></span> <span>Post <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
           </div>
@@ -24,13 +24,13 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 ftco-animate">
-              <h2 th:text="${boardDto.title}"></h2>
-              <p th:text="${boardDto.writer} + '  ' + ${#temporals.format(boardDto.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
-              <p th:text="${boardDto.content}" style="clear: both; padding: 50px 10px 50px 0px;"></p>
+              <h2 th:text="${board.title}"></h2>
+              <p th:text="${board.writer} + '  ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
+              <p th:text="${board.content}" style="clear: both; padding: 50px 10px 50px 0px;"></p>
               <div class="tag-widget post-tag-container mb-5 mt-5" style="float: right;">
                 <div class="tagcloud">
-                  <a th:href="@{'/post/edit/' + ${boardDto.id}}" class="tag-cloud-link">수정</a>
-                  <form id="delete-form" method="post" th:action="@{'/post/' + ${boardDto.id}}" style="float: left"></form>
+                  <a th:href="@{'/posts/update/' + ${board.id}}" class="tag-cloud-link">수정</a>
+                  <form id="delete-form" method="post" th:action="@{'/post/' + ${board.id}}" style="float: left"></form>
                     <input type="hidden" name="_method" value="delete"/>
                     <button class="tag-cloud-link" type="submit">삭제</button>
                   </form>
@@ -42,7 +42,7 @@
                   <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
                 </div>
                 <div class="desc">
-                  <h3 th:text="${boardDto.writer}"></h3>
+                  <h3 th:text="${board.writer}"></h3>
                   <p>member 자기 소개 글 넣기</p>
                 </div>
               </div>
