@@ -50,7 +50,7 @@ public class BoardService {
     public List<BoardResponseDto> findAll() {
         List<BoardEntity> boardEntityList = boardRepository.findAll();
         return boardEntityList.stream()
-                .map(boardEntity -> new BoardResponseDto(boardEntity)
+                .map(boardEntity -> new BoardResponseDto(boardEntity))  //.map(BoardResponseDto::new)
                 .collect(Collectors.toList());
     }
 }
