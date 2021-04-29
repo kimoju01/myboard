@@ -29,7 +29,7 @@
 							<input type="text" class="form-control" placeholder="Type a keyword and hit enter">
 						</div>
 					</form>
-					<a th:href="@{/post}" class="btn btn-primary py-3 px-5" style="
+					<a th:href="@{/posts/save}" class="btn btn-primary py-3 px-5" style="
 			  			float: right; margin: 10px 40px 0px 0px; display: inline-block;">write</a>
 				</div>
 				<div class="row">
@@ -50,12 +50,12 @@
 												<span class="mos" th:text="${#temporals.format(board.createdDate, 'MM')}"></span>
 											</div>
 										</div>
-										<h3 class="heading"><a th:href="@{'/post/' + ${board.id}}"><span th:text="${board.title}"
+										<h3 class="heading"><a th:href="@{'/posts/' + ${board.id}}"><span th:text="${board.title}"
 																										 style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 288px;"></span></a></h3>
 										<p style="width: 288px; height:79px;"><span th:text="${board.content}"
 																					style="display: block; white-space: normal; overflow: hidden; text-overflow: ellipsis; max-height: 100%;"></span></p>
 										<div class="d-flex align-items-center mt-4 meta">
-											<p class="mb-0"><a href="#" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
+											<p class="mb-0"><a th:href="@{'/posts/' + ${board.id}}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>
 											<p class="ml-auto mb-0">
 												<a href="#" class="mr-2"><span th:text="${board.writer}"></span></a>
 												<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
