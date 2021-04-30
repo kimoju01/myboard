@@ -24,16 +24,14 @@
         <div class="container">
           <div class="row">
             <div class="col-lg-8 ftco-animate">
+              <input type="hidden" id="id" th:value="${board.id}">
               <h2 th:text="${board.title}"></h2>
               <p th:text="${board.writer} + '  ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
               <p th:text="${board.content}" style="clear: both; padding: 50px 10px 50px 0px;"></p>
               <div class="tag-widget post-tag-container mb-5 mt-5" style="float: right;">
                 <div class="tagcloud">
                   <a th:href="@{'/posts/update/' + ${board.id}}" class="tag-cloud-link">수정</a>
-                  <form id="delete-form" method="post" th:action="@{'/post/' + ${board.id}}" style="float: left"></form>
-                    <input type="hidden" name="_method" value="delete"/>
-                    <button class="tag-cloud-link" type="submit">삭제</button>
-                  </form>
+                  <button class="tag-cloud-link" id="btn-delete" type="button">삭제</button>
                 </div>
               </div>
 
