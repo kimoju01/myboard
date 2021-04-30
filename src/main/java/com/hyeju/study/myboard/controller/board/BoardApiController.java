@@ -5,6 +5,7 @@ import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // Post-Create, Get-Read, Put-Update, Delete-Delete
@@ -24,6 +25,13 @@ public class BoardApiController {
     @PutMapping("/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody BoardUpdateRequestDto requestDto) {
         return boardService.update(id, requestDto);
+    }
+
+    /* 게시글 삭제 */
+    @DeleteMapping("/posts/{id}")
+    public Long delete(@PathVariable Long id) {
+        boardService.delete(id);
+        return id;
     }
 
     /* 게시글 detail */

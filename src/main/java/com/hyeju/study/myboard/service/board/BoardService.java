@@ -36,6 +36,15 @@ public class BoardService {
         return id;
     }
 
+    /*게시글 삭제 */
+    @Transactional
+    public void delete(Long id) {
+        BoardEntity boardEntity = boardRepository.findById(id)
+                .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다. id=" + id));
+
+        boardRepository.delete(boardEntity);
+    }
+
     /* 게시글 조회 */
     @Transactional(readOnly = true)
     public BoardResponseDto findById(Long id) {
