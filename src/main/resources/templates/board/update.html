@@ -27,7 +27,9 @@
                 </div>
             </form>
             <button type="button" id="btn-update">수정</button>
-            <button onclick="location.href='/posts/'">취소</button>
+<!--            <button onclick="location.href='/posts'">취소</button>-->
+<!--            <a th:href="@{'/posts/' + ${board.id}}">취소</a>-->
+            <button type="button" th:onclick="'location.href=\'/posts/' + ${board.id} + '\''" >취소</button>
         </div>
     </section>
     </body>
