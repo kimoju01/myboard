@@ -1,5 +1,6 @@
-package com.hyeju.study.myboard.domain.entity;
+package com.hyeju.study.myboard.domain.board.entity;
 
+import com.hyeju.study.myboard.domain.TimeEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;

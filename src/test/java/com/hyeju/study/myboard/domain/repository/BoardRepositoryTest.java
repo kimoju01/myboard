@@ -1,6 +1,7 @@
 package com.hyeju.study.myboard.domain.repository;
 
-import com.hyeju.study.myboard.domain.entity.BoardEntity;
+import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
+import com.hyeju.study.myboard.domain.board.repository.BoardRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;

@@ -1,4 +1,4 @@
-package com.hyeju.study.myboard.domain.entity;
+package com.hyeju.study.myboard.domain;
 
 import lombok.Getter;
 import org.springframework.data.annotation.CreatedDate;

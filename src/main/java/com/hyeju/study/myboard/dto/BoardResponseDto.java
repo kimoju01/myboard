@@ -1,6 +1,6 @@
 package com.hyeju.study.myboard.dto;
 
-import com.hyeju.study.myboard.domain.entity.BoardEntity;
+import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;

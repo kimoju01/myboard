@@ -1,7 +1,7 @@
 package com.hyeju.study.myboard.service.board;
 
-import com.hyeju.study.myboard.domain.entity.BoardEntity;
-import com.hyeju.study.myboard.domain.repository.BoardRepository;
+import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
+import com.hyeju.study.myboard.domain.board.repository.BoardRepository;
 import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
