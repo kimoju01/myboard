@@ -29,6 +29,7 @@ dependencies {
 	testImplementation 'org.springframework.boot:spring-boot-starter-test'
 	runtimeOnly 'com.h2database:h2'
 	compile group: 'org.springframework.boot', name: 'spring-boot-devtools', version: '2.2.1.RELEASE'
+	compile 'org.springframework.boot:spring-boot-starter-oauth2-client'
 }
 
 test {
