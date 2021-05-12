@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+<!--    <meta name="google-signin-scope" content="profile email">-->
+<!--    <meta name="google-signin-client_id" content="312110320208-dvsnf7uec20lvnie75h7mbf70kum0rcj.apps.googleusercontent.com.apps.googleusercontent.com">-->
+    <title>로그인</title>
+</head>
+<th:block layout:fragment="content">
+    <body>
+    <section class="ftco-section">
+        <div class="container">
+            <h2>로그인 페이지</h2>
+            <form>
+                <input type="email" name="email" placeholder="Email"><br>
+                <input type="password" name="password" placeholder="Password"><br>
+            </form>
+            <div><a th:href="@{/join}">이메일로 회원 가입</a></div>
+            <div><a th:href="@{/oauth2/authorization/google}" role="button">구글 계정으로 회원 가입</a></div>
+<!--            <div class="g-signin2" data-onsuccess="onSignIn" data-width="240" data-height="50" data-longtitle="true" data-theme="dark"></div>-->
+<!--            <div id="k-signin"><a th:href="@{/}" style="background-image: url('images/kakao_login_en_medium_wide_png');"></div>-->
+        </div>
+    </section>
+    </body>
+</th:block>
+</html>

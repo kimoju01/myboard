@@ -44,6 +44,16 @@ public class HomeController {
         return "board/update";
     }
 
+    @GetMapping("/join")
+    public String userJoin() {
+        return "board/joinForm";
+    }
+
+    @GetMapping("/login")
+    public String userLogin() {
+        return "board/login";
+    }
+
     @GetMapping("destination-single")
     public String destination_single() {
         return "destination-single";
