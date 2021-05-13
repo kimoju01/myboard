@@ -1,7 +1,7 @@
-package com.hyeju.study.myboard.domain.user.entity;
+package com.hyeju.study.myboard.domain.member.entity;
 
 import com.hyeju.study.myboard.domain.TimeEntity;
-import com.hyeju.study.myboard.domain.user.Role;
+import com.hyeju.study.myboard.domain.member.Role;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -11,8 +11,8 @@ import javax.persistence.*;
 @Getter
 @NoArgsConstructor
 @Entity
-@Table(name = "user")
-public class UserEntity extends TimeEntity {
+@Table(name = "member")
+public class MemberEntity extends TimeEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -23,6 +23,9 @@ public class UserEntity extends TimeEntity {
     @Column(nullable = false)
     private String email;
 
+    @Column(nullable = false)
+    private String password;
+
     @Column
     private String picture;
 
@@ -31,14 +34,15 @@ public class UserEntity extends TimeEntity {
     private Role role;
 
     @Builder
-    public UserEntity(String name, String email, String picture, Role role) {
+    public MemberEntity(String name, String email, String password, String picture, Role role) {
         this.name = name;
         this.email = email;
+        this.password = password;
         this.picture = picture;
         this.role = role;
     }
 
-    public UserEntity update(String name, String picture) {
+    public MemberEntity update(String name, String picture) {
         this.name = name;
         this.picture = picture;
 
