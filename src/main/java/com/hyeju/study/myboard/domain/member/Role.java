@@ -1,4 +1,4 @@
-package com.hyeju.study.myboard.domain.user;
+package com.hyeju.study.myboard.domain.member;
 
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
