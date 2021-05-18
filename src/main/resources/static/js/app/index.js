@@ -13,13 +13,10 @@ var main = {
             _this.delete();
         });
 
-        $('#btn-member-join').on('click', function () {
+        $('#btn-user-join').on('click', function () {
             _this.join();
         });
 
-        // $('#btn-member-login').on('click', function () {
-        //     _this.login();
-        // });
     },
 
     save: function () {
@@ -90,61 +87,32 @@ var main = {
     },
 
     join: function () {
-        var userdata = {
+        var data = {
             name: $('#name').val(),
             email: $('#email').val(),
             password: $('#password').val()
         };
 
-        if (userdata.name == "" || userdata.email == "" || userdata.password == "") {
+        if (data.name == "" || data.email == "" ||  data.password == "") {
             alert("정보를 모두 입력해주세요.");
             return;
-        }
-        ;
+        };
 
         $.ajax({
             type: 'POST',
-            url: '/api/v1/members/new',
+            url: '/api/v1/members',
             dataType: 'json',
             contentType: 'application/json; charset=utf-8',
-            data: JSON.stringify(userdata)
+            data: JSON.stringify(data)
         }).done(function () {
             alert("회원 가입이 완료되었습니다.");
-            window.location.href = '/login';
-        }).fail(function (error) {
-            alert(JSON.stringify(error));
+            window.location.href = '/loginPage';
+        }).fail(function (error, textStatus) {
+            // alert(JSON.stringify(error));
+            console.log(error);
+            console.log(textStatus);
         });
     }
-
-    // },
-
-    // login: function () {
-    //     var userdata = {
-    //         email: $('#email').val(),
-    //         password: $('#password').val()
-    //     };
-    //
-    //     if (userdata.email == "") {
-    //         alert("이메일을 입력해주세요.");
-    //         return;
-    //     } else if (userdata.password == "") {
-    //         alert("비밀번호를 입력해주세요.");
-    //         return;
-    //     };
-    //
-    //     $.ajax({
-    //         type: 'POST',
-    //         url: '/api/v1/members/login',
-    //         dataType: 'json',
-    //         contentType: 'application/json; charset=utf-8',
-    //         data: JSON.stringify(userdata)
-    //     }).done(function () {
-    //         alert(userdata.email + "님 반갑습니다!");
-    //         window.location.href = '/';
-    //     }).fail(function (error) {
-    //         alert(JSON.stringify(error));
-    //     });
-    // }
 
 };
 
