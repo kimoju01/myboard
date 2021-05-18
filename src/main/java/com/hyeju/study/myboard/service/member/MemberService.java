@@ -17,29 +17,21 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.Collection;
-import java.util.Collections;
 
 @Service
 @RequiredArgsConstructor
 //public class MemberService implements UserDetailsService {
 public class MemberService {
     private final MemberRepository memberRepository;
+    private final BCryptPasswordEncoder encoder;
 
     @Transactional
     public Long save(MemberDto memberDto) {
-//        BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
 //        System.out.println("암호화 하기 전 비번 : " + memberDto.getPassword());
-////        String encodePassword = encoder.encode(memberDto.getPassword());
-////        MemberEntity memberEntity = MemberEntity.builder()
-////                .email(memberDto.getEmail())
-////                .name(memberDto.getName())
-////                .password(encodePassword)
-////                .build();
-////        return memberRepository.save(memberEntity).getId();
-//        memberDto.setPassword(encoder.encode(memberDto.getPassword()));
+        String encodePassword = encoder.encode(memberDto.getPassword());
+//        System.out.println(encodePassword);
+        memberDto.setPassword(encodePassword);
 //        System.out.println("암호화 후 비번 : " + memberDto.getPassword());
-
         return memberRepository.save(memberDto.toEntity()).getId();
     }
 //
