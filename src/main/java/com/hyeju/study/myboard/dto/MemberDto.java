@@ -4,10 +4,12 @@ import com.hyeju.study.myboard.domain.member.Role;
 import com.hyeju.study.myboard.domain.member.entity.MemberEntity;
 import lombok.Builder;
 import lombok.Getter;
+import lombok.NoArgsConstructor;
 import lombok.Setter;
 
 @Getter
-@Setter
+//@Setter
+@NoArgsConstructor
 public class MemberDto {
     private String name;
     private String email;
@@ -21,6 +23,10 @@ public class MemberDto {
         this.email = email;
         this.password = password;
         this.role = role;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
     }
 
     public MemberEntity toEntity() {
