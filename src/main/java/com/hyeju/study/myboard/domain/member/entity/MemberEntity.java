@@ -26,28 +26,27 @@ public class MemberEntity extends TimeEntity {
     @Column(nullable = false)
     private String password;
 
-    @Column
-    private String picture;
+//    @Column
+//    private String picture;
 
     @Enumerated(EnumType.STRING)
     @Column(nullable = false)
     private Role role;
 
     @Builder
-    public MemberEntity(String name, String email, String password, String picture, Role role) {
+    public MemberEntity(String name, String email, String password, Role role) {
         this.name = name;
         this.email = email;
         this.password = password;
-        this.picture = picture;
         this.role = role;
     }
 
-    public MemberEntity update(String name, String picture) {
-        this.name = name;
-        this.picture = picture;
-
-        return this;
-    }
+//    public MemberEntity update(String name, String picture) {
+//        this.name = name;
+//        this.picture = picture;
+//
+//        return this;
+//    }
 
     public String getRoleKey() {
         return this.role.getKey();
