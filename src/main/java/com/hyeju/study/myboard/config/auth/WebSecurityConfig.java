@@ -1,9 +1,8 @@
 package com.hyeju.study.myboard.config.auth;
 
-import com.hyeju.study.myboard.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -18,10 +17,16 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
 //    private final CustomOAuth2UserService customOAuth2UserService;
-    private final MemberService memberService;
+//    private final MemberService memberService;
+
+    @Bean
+    public BCryptPasswordEncoder bCryptPasswordEncoder() {
+        return new BCryptPasswordEncoder();
+    }
+
 
     @Override
-    public void configure(WebSecurity web) throws Exception {
+    public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/css/**", "/scss/**", "/images/**", "/js/**", "/fonts/**", "**/favicon.ico", "/h2-console/**");
     }
 
@@ -53,7 +58,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 //                    .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
 
     }
-//
+
 //    @Override
 //    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
 //        auth.userDetailsService(memberService)
