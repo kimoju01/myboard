@@ -18,7 +18,7 @@
 <!--                    <li class="nav-item"><a href="#restaurant-section" class="nav-link"><span>Restaurant</span></a></li>-->
                     <li class="nav-item"><a th:href="@{/logout}" class="nav-link" sec:authorize="isAuthenticated()"><span>Logout</span></a></li>
                     <li class="nav-item"><a th:href="@{/login}" class="nav-link" sec:authorize="!isAuthenticated()"><span>Login</span></a></li>
-<!--                    <li class="nav-item"><a th:href="#contact-section" class="nav-link"><span>Join</span></a></li>-->
+                    <li class="nav-item"><span sec:authorize="isAuthenticated()">Hello [[${#httpServletRequest.remoteUser}]]!</span></li>
                 </ul>
             </div>
         </div>
