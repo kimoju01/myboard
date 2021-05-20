@@ -5,7 +5,6 @@ import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // Post-Create, Get-Read, Put-Update, Delete-Delete

@@ -50,5 +50,5 @@ public class MemberEntity extends TimeEntity {
 
     public String getRoleKey() {
         return this.role.getKey();
-    }
+    }   //"ROLE_" 을 붙여서 return 해주어야 하기 때문에 key값에 "ROLE_" 붙여둠
 }

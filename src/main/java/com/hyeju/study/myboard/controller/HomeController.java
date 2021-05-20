@@ -44,13 +44,13 @@ public class HomeController {
         return "board/update";
     }
 
-    @GetMapping("/join")
-    public String userJoin() {
-        return "board/joinForm";
+    @GetMapping("/register")
+    public String usersRegister() {
+        return "board/join";
     }
 
     @GetMapping("/login")
-    public String userLogin() {
+    public String usersLogin() {
         return "board/login";
     }
 
