@@ -3,6 +3,7 @@ package com.hyeju.study.myboard.config.auth;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -16,18 +17,24 @@ import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 @EnableGlobalMethodSecurity(prePostEnabled = true)
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
-//    private final CustomOAuth2UserService customOAuth2UserService;
-//    private final MemberService memberService;
+    private final CustomUserDetailsService customUserDetailsService;
 
     @Bean
     public BCryptPasswordEncoder bCryptPasswordEncoder() {
         return new BCryptPasswordEncoder();
     }
 
+    //시큐리티가 가로채서 로그인할 때, 해당 비밀번호가 어떤 해쉬로 암호화 되었는지 알아야 같은 해쉬로 암호화해서 DB에 있는 해쉬랑 비교할 수 있음.
+    @Override
+    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
+        auth.userDetailsService(customUserDetailsService)
+                .passwordEncoder(bCryptPasswordEncoder());
+    }
 
     @Override
     public void configure(WebSecurity web) {
-        web.ignoring().antMatchers("/css/**", "/scss/**", "/images/**", "/js/**", "/fonts/**", "**/favicon.ico", "/h2-console/**");
+        web.ignoring().antMatchers("/css/**", "/scss/**", "/images/**", "/js/**", "/fonts/**", "/favicon.ico", "/error", "/h2-console/**");
+//        web.ignoring().antMatchers("/static/**", "/favicon.ico", "/error", "/h2-console/**");
     }
 
     @Override
@@ -35,11 +42,12 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/about",  "/loginPage", "/joinPage", "/api/v1/**").permitAll()
+                    .antMatchers("/", "/about",  "/login", "/register", "/api/v1/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
-                    .loginPage("/loginPage")
+                    .loginPage("/login")
+                    .loginProcessingUrl("/loginProc")
                     .defaultSuccessUrl("/")
                     .usernameParameter("email")
                     .passwordParameter("password")
@@ -59,9 +67,4 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
 
     }
 
-//    @Override
-//    protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.userDetailsService(memberService)
-//                .passwordEncoder(new BCryptPasswordEncoder());
-//    }
 }
