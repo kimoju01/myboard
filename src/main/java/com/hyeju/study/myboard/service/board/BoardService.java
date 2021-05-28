@@ -2,6 +2,7 @@ package com.hyeju.study.myboard.service.board;
 
 import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
 import com.hyeju.study.myboard.domain.board.repository.BoardRepository;
+import com.hyeju.study.myboard.domain.member.entity.MemberEntity;
 import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
@@ -21,7 +22,9 @@ public class BoardService {
 
     /* 게시글 등록 */
     @Transactional
-    public Long save(BoardSaveRequestDto requestDto) {
+    public Long save(BoardSaveRequestDto requestDto, MemberEntity memberEntity) {
+        requestDto.setCount(0L);
+        requestDto.setMemberEntity(memberEntity);
         return boardRepository.save(requestDto.toEntity()).getId();
     }
 
