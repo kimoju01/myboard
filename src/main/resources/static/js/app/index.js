@@ -22,10 +22,9 @@ var main = {
     save: function () {
         var data = {
             title: $('#title').val(),
-            writer: $('#writer').val(),
             content: $('#content').val()
         };
-        if (data.title == "" || data.writer == "" || data.content == "") {
+        if (data.title == "" || data.content == "") {
             alert("정보를 모두 입력해주세요.");
             return;
         };

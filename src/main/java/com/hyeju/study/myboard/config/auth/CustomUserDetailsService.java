@@ -19,6 +19,6 @@ public class CustomUserDetailsService implements UserDetailsService {
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         MemberEntity memberEntity = memberRepository.findByEmail(username)
                 .orElseThrow(() -> new UsernameNotFoundException("존재하지 않는 유저입니다."));
-        return new CustonUserDetails(memberEntity); //시큐리티의 세션에 유저정보가 저장됨
+        return new CustomUserDetails(memberEntity); //시큐리티의 세션에 유저정보가 저장됨
     }
 }

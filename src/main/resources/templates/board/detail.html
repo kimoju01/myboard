@@ -26,7 +26,7 @@
             <div class="col-lg-8 ftco-animate">
               <input type="hidden" id="id" th:value="${board.id}">
               <h2 th:text="${board.title}"></h2>
-              <p th:text="${board.writer} + '  ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
+              <p th:text="${#authentication.name} + '  ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
               <p th:text="${board.content}" style="clear: both; padding: 50px 10px 50px 0px;"></p>
               <div class="tag-widget post-tag-container mb-5 mt-5" style="float: right;">
                 <div class="tagcloud">
@@ -40,7 +40,7 @@
                   <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
                 </div>
                 <div class="desc">
-                  <h3 th:text="${board.writer}"></h3>
+                  <h3 th:text="${#authentication.name}"></h3>
                   <p>member 자기 소개 글 넣기</p>
                 </div>
               </div>

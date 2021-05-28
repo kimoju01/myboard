@@ -1,6 +1,7 @@
 package com.hyeju.study.myboard.config.auth;
 
 import com.hyeju.study.myboard.domain.member.entity.MemberEntity;
+import lombok.Getter;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -10,11 +11,12 @@ import java.util.Collections;
 
 //스프링 시큐리티가 로그인 요청을 가로채서(/loginProc) 로그인을 진행하고 완료되면 UserDetails 타입 오브젝트를
 //스프링 시큐리티의 고유한 세션저장소에 저장한다.
-public class CustonUserDetails implements UserDetails {
+@Getter
+public class CustomUserDetails implements UserDetails {
 
     private MemberEntity memberEntity;  //콤포지션 (MemberEntity를 품고있다.
 
-    public CustonUserDetails(MemberEntity memberEntity) {
+    public CustomUserDetails(MemberEntity memberEntity) {
         this.memberEntity = memberEntity;
     }
 

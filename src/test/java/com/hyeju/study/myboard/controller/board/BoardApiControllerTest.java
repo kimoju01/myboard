@@ -47,7 +47,6 @@ class BoardApiControllerTest {
         BoardSaveRequestDto requestDto = BoardSaveRequestDto.builder()
                 .title(title)
                 .content(content)
-                .writer("writer")
                 .build();
 
         String url = "http://localhost:" + port + "/api/v1/post";
@@ -73,7 +72,6 @@ class BoardApiControllerTest {
         BoardEntity savedPost = boardRepository.save(BoardEntity.builder()
                 .title("title")
                 .content("content")
-                .writer("writer")
                 .build());
 
         Long updateId = savedPost.getId();

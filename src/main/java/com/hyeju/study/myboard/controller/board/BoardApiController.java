@@ -1,10 +1,13 @@
 package com.hyeju.study.myboard.controller.board;
 
+import com.hyeju.study.myboard.config.auth.CustomUserDetails;
 import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
 @RestController // Post-Create, Get-Read, Put-Update, Delete-Delete
@@ -16,8 +19,8 @@ public class BoardApiController {
 
     /* 게시글 등록 */
     @PostMapping("/posts")
-    public Long save(@RequestBody BoardSaveRequestDto requestDto) {
-        return boardService.save(requestDto);
+    public Long save(@RequestBody BoardSaveRequestDto requestDto, @AuthenticationPrincipal CustomUserDetails customUserDetails) {
+        return boardService.save(requestDto, customUserDetails.getMemberEntity());
     }
 
     /* 게시글 수정 */
