@@ -1,10 +1,12 @@
 package com.hyeju.study.myboard.domain.board.entity;
 
 import com.hyeju.study.myboard.domain.TimeEntity;
+import com.hyeju.study.myboard.domain.member.entity.MemberEntity;
 import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -20,17 +22,22 @@ public class BoardEntity extends TimeEntity {
     @Column(length = 100, nullable = false)
     private String title;
 
-    @Column(columnDefinition = "TEXT", nullable = false)
+    @Lob
     private String content;
 
-    @Column(length = 10, nullable = false)
-    private String writer;
+    @Column(length = 100)
+    private Long count;
+
+    @ManyToOne  //Many = Board / One = User : 한 명의 멤버는 여러개의 게시글을 쓸 수 있다.
+    @JoinColumn(name="memId")
+    private MemberEntity memberEntity;
 
     @Builder
-    public BoardEntity(String title, String content, String writer) {
+    public BoardEntity(String title, String content, Long count, MemberEntity memberEntity) {
         this.title = title;
         this.content = content;
-        this.writer = writer;
+        this.count = count;
+        this.memberEntity = memberEntity;
     }
 
     public void update(String title, String content) {
