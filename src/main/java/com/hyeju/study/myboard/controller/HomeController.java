@@ -3,6 +3,9 @@ package com.hyeju.study.myboard.controller;
 import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
+import org.springframework.data.web.PageableDefault;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -20,8 +23,8 @@ public class HomeController {
     }
 
     @GetMapping("/posts")
-    public String list(Model model) {
-        model.addAttribute("boardList", boardService.findAll());
+    public String list(Model model, @PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+        model.addAttribute("boardList", boardService.findAll(pageable));
         return "board/list";
     }
 
