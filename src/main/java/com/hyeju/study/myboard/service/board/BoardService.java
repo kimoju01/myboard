@@ -7,6 +7,8 @@ import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -59,10 +61,8 @@ public class BoardService {
 
     /* 게시글 목록 */
     @Transactional(readOnly = true)
-    public List<BoardResponseDto> findAll() {
-        List<BoardEntity> boardEntityList = boardRepository.findAll();
-        return boardEntityList.stream()
-                .map(boardEntity -> new BoardResponseDto(boardEntity))  //.map(BoardResponseDto::new)
-                .collect(Collectors.toList());
+    public Page<BoardResponseDto> findAll(Pageable pageable) {
+        Page<BoardEntity> boardEntityList = boardRepository.findAll(pageable);
+        return boardEntityList.map(boardEntity -> new BoardResponseDto(boardEntity)); // = return boardEntityList.map(BoardResponseDto::new);
     }
 }
