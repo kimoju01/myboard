@@ -6,7 +6,8 @@ import com.hyeju.study.myboard.dto.BoardSaveRequestDto;
 import com.hyeju.study.myboard.dto.BoardUpdateRequestDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.security.core.Authentication;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,6 +17,12 @@ import org.springframework.web.bind.annotation.*;
 public class BoardApiController {
 
     private final BoardService boardService;
+
+    /* 게시글 목록 */
+    @GetMapping("/posts")
+    public Page<BoardResponseDto> list(Pageable pageable) {
+        return boardService.findAll(pageable);
+    }
 
     /* 게시글 등록 */
     @PostMapping("/posts")
