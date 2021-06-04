@@ -98,11 +98,9 @@
 							<div class="block-27">
 								<ul class="pagination justify-content-center">
 									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=1)}">&lt;<</a></li>
-									<li class="page-item" th:class="$ ? active"><a class="page-link" th:href="@{/posts(page=1)}">&lt;<</a></li>
-<!--									<li class="page-item"><a class="page-link" th:href="@{/posts(page=1)}">&lt;<</a></li>-->
-									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=${})}">&lt;</a></li>
+									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.pageable.pageNumber})}">&lt;</a></li>
 									<li class="page-item"><a class="page-link" href="#">1</a></li>
-									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${})}">&gt;</a></li>
+									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.pageable.pageNumber + 2})}">&gt;</a></li>
 									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.totalPages})}">&gt;></a></li>
 								</ul>
 								<ul>
