@@ -96,10 +96,12 @@
 						<div class="row mt-5">
 						  <div class="col text-center">
 							<div class="block-27">
-								<ul class="pagination justify-content-center">
+								<ul class="pagination justify-content-center"
+									th:with="totalPages=${boardList.totalPages}">
 									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=1)}">&lt;<</a></li>
 									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.pageable.pageNumber})}">&lt;</a></li>
-									<li class="page-item"><a class="page-link" href="#">1</a></li>
+									<li class="page-item" th:each="num : ${#numbers.sequence(1,totalPages)}" th:if="${totalPages} != 0" th:classappend="${num == boardList.pageable.pageNumber + 1} ? active"><a class="page-link" th:text="${num}" th:href="@{/posts(page=${num})}"></a></li>
+									<li class="page-item" th:unless="${totalPages} != 0"><a class="page-link" th:text="1"></a></li>
 									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.pageable.pageNumber + 2})}">&gt;</a></li>
 									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.totalPages})}">&gt;></a></li>
 								</ul>
