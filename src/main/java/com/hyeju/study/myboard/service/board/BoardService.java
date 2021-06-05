@@ -12,10 +12,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-import java.util.stream.Collectors;
-
-
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -59,10 +55,13 @@ public class BoardService {
         return new BoardResponseDto(boardEntity);
     }
 
-    /* 게시글 목록 */
+    /* 게시글 전체&검색 목록 */
     @Transactional(readOnly = true)
-    public Page<BoardResponseDto> findAll(Pageable pageable) {
-        Page<BoardEntity> boardEntityList = boardRepository.findAll(pageable);
+    public Page<BoardResponseDto> findAll(Pageable pageable, String keyword) {
+        Page<BoardEntity> boardEntityList =
+                keyword == null
+                ? boardRepository.findAll(pageable)
+                : boardRepository.findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(keyword, keyword, pageable);
         return boardEntityList.map(boardEntity -> new BoardResponseDto(boardEntity)); // = return boardEntityList.map(BoardResponseDto::new);
     }
 }
