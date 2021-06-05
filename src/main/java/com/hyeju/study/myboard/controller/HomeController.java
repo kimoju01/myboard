@@ -25,7 +25,7 @@ public class HomeController {
 
     @GetMapping("/posts")
     public String list(@RequestParam(value = "keyword", required = false) String keyword, Model model, @PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
-        model.addAttribute("boardList", boardService.findAll(pageable, keyword));
+        model.addAttribute("boardList", boardService.listPost(pageable, keyword));
         return "board/list";
     }
 

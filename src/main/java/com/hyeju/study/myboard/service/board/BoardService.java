@@ -57,7 +57,7 @@ public class BoardService {
 
     /* 게시글 전체&검색 목록 */
     @Transactional(readOnly = true)
-    public Page<BoardResponseDto> findAll(Pageable pageable, String keyword) {
+    public Page<BoardResponseDto> listPost(Pageable pageable, String keyword) {
         Page<BoardEntity> boardEntityList =
                 keyword == null
                 ? boardRepository.findAll(pageable)
