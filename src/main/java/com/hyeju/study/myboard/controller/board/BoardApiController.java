@@ -20,8 +20,8 @@ public class BoardApiController {
 
     /* 게시글 목록 */
     @GetMapping("/posts")
-    public Page<BoardResponseDto> list(Pageable pageable) {
-        return boardService.findAll(pageable);
+    public Page<BoardResponseDto> list(Pageable pageable, String keyword) {
+        return boardService.findAll(pageable, keyword);
     }
 
     /* 게시글 등록 */
