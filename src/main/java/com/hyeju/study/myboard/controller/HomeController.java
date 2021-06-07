@@ -24,8 +24,9 @@ public class HomeController {
     }
 
     @GetMapping("/posts")
-    public String list(@RequestParam(value = "keyword", required = false) String keyword, Model model, @PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String list(@RequestParam(value = "keyword", required = false) String keyword, Model model, @PageableDefault(size = 1, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("boardList", boardService.listPost(pageable, keyword));
+        model.addAttribute("maxPage", 5);
         return "board/list";
     }
 
