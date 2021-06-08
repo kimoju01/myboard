@@ -109,21 +109,6 @@
 									<li class="page-item" th:unless="${totalPages} != 0"><a class="page-link" th:text="1" th:href="@{/posts(page=1)}"></a></li>
 									<li class="page-item" th:classappend="${endNum == totalPages} ? disabled"><a class="page-link" th:href="@{/posts(page=${startNum + maxPage}, keyword=${param.keyword})}">&gt;</a></li>
 									<li class="page-item" th:classappend="${endNum == totalPages} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.totalPages}, keyword=${param.keyword})}">&gt;></a></li>
-<!--									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=1)}">&lt;<</a></li>-->
-<!--									<li class="page-item" th:classappend="${boardList.first} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.pageable.pageNumber}, keyword=${param.keyword})}">&lt;</a></li>-->
-<!--									<li class="page-item" th:each="num : ${#numbers.sequence(start,end)}" th:if="${totalPages} != 0" th:classappend="${num == boardList.pageable.pageNumber + 1} ? active"><a class="page-link" th:text="${num}" th:href="@{/posts(page=${num}, keyword=${param.keyword})}"></a></li>-->
-<!--									<li class="page-item" th:unless="${totalPages} != 0"><a class="page-link" th:text="1" th:href="@{/posts(page=1)}"></a></li>-->
-<!--									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.pageable.pageNumber + 2}, keyword=${param.keyword})}">&gt;</a></li>-->
-<!--									<li class="page-item" th:classappend="${boardList.last} ? disabled"><a class="page-link" th:href="@{/posts(page=${boardList.totalPages}, keyword=${param.keyword})}">&gt;></a></li>-->
-								</ul>
-								<ul>
-									<li><a href="#">&lt;</a></li>
-									<li class="active"><span>1</span></li>
-									<li><a href="#">2</a></li>
-									<li><a href="#">3</a></li>
-									<li><a href="#">4</a></li>
-									<li><a href="#">5</a></li>
-									<li><a href="#">&gt;</a></li>
 								</ul>
 							</div>
 						  </div>
