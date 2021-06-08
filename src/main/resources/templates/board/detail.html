@@ -3,6 +3,7 @@
       xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
       layout:decorator="~{layout/default}">
   <head>
+    <meta charset="UTF-8">
     <title th:text="${board.title}"></title>
   </head>
   <th:block layout:fragment="content">
@@ -14,7 +15,7 @@
           <div class="row no-gutters slider-text align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-4">
               <h1 class="mb-3 bread" th:text="${board.title}"></h1>
-              <p class="breadcrumbs"><span class="mr-2"><a th:href="@{/}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a th:href="@{/board}">Board <i class="ion-ios-arrow-forward"></i></a></span> <span>Post <i class="ion-ios-arrow-forward"></i></span></p>
+              <p class="breadcrumbs"><span class="mr-2"><a th:href="@{/}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a th:href="@{/posts}">Board <i class="ion-ios-arrow-forward"></i></a></span> <span>Post <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
           </div>
         </div>
@@ -26,10 +27,10 @@
             <div class="col-lg-8 ftco-animate">
               <input type="hidden" id="id" th:value="${board.id}">
               <h2 th:text="${board.title}"></h2>
-              <p th:text="${#authentication.name} + '  ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
-              <p th:text="${board.content}" style="clear: both; padding: 50px 10px 50px 0px;"></p>
+              <p th:text="${board.memberEntity.email} + '  ' + ${#temporals.format(board.createdDate, 'yyyy-MM-dd HH:mm')}" style="float:right;"></p>
+              <p th:utext="${board.content}" style="clear: both; padding: 50px 10px 50px 0px;"></p>
               <div class="tag-widget post-tag-container mb-5 mt-5" style="float: right;">
-                <div class="tagcloud">
+                <div class="tagcloud" th:if="${#authentication.name} == ${board.memberEntity.email}">
                   <a th:href="@{'/posts/update/' + ${board.id}}" class="tag-cloud-link">수정</a>
                   <button class="tag-cloud-link" id="btn-delete" type="button">삭제</button>
                 </div>
@@ -40,7 +41,7 @@
                   <img src="images/person_1.jpg" alt="Image placeholder" class="img-fluid mb-4">
                 </div>
                 <div class="desc">
-                  <h3 th:text="${#authentication.name}"></h3>
+                  <h3 th:text="${board.memberEntity.email}"></h3>
                   <p>member 자기 소개 글 넣기</p>
                 </div>
               </div>
