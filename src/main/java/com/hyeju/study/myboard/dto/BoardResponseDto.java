@@ -1,6 +1,7 @@
 package com.hyeju.study.myboard.dto;
 
 import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
+import com.hyeju.study.myboard.domain.member.entity.MemberEntity;
 import lombok.Getter;
 
 import java.time.LocalDateTime;
@@ -12,6 +13,7 @@ public class BoardResponseDto {
     private String content;
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
+    private MemberEntity memberEntity;
 
     public BoardResponseDto(BoardEntity boardEntity) {
         this.id = boardEntity.getId();
@@ -19,6 +21,7 @@ public class BoardResponseDto {
         this.content = boardEntity.getContent();
         this.createdDate = boardEntity.getCreatedDate();
         this.modifiedDate = boardEntity.getModifiedDate();
+        this.memberEntity = boardEntity.getMemberEntity();
     }
 
 }
