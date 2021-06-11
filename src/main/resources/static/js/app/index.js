@@ -17,12 +17,17 @@ var main = {
             _this.join();
         });
 
+        $('#email').on('keyup', function () {
+            console.log($(this).val());
+            _this.checkEmail();
+        });
+
     },
 
     save: function () {
         var data = {
-            title: $('#title').val(),
-            content: $('#content').val()
+                title: $('#title').val(),
+                content: $('#content').val()
         };
         if (data.title == "" || data.content == "") {
             alert("정보를 모두 입력해주세요.");
@@ -106,11 +111,35 @@ var main = {
         }).done(function () {
             alert("회원 가입이 완료되었습니다.");
             window.location.href = '/loginPage';
-        }).fail(function (error, textStatus) {
-            // alert(JSON.stringify(error));
-            console.log(error);
-            console.log(textStatus);
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
         });
+    },
+
+    checkEmail: function () {
+        var email = $('#email').val();
+        var emailExp = /^[A-Za-z0-9_\.\-]+@[A-Za-z0-9\-]+\.[A-Za-z0-9\-]+/;
+        var verifyEmail = emailExp.test(email);
+
+        $.ajax({
+            type: 'POST',
+            url: '/api/v1/members/duplicate',
+            dataType: 'json',
+            contentType: 'application/json; charset=utf-8',
+            data: email
+        }).done(function (data) {
+            console.log(data);
+            if (data === true || !verifyEmail) {
+                $('#email.form-control').css('border-color', 'red');
+                $('#btn-user-join').attr('disabled', 'disabled');
+            } else if (data === false && verifyEmail) {
+                $('#email.form-control').css('border-color', 'green');
+                $('#btn-user-join').removeAttr('disabled');
+            }
+        }).fail(function (error) {
+            alert(JSON.stringify(error));
+        });
+
     }
 
 };
