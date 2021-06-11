@@ -19,4 +19,8 @@ public class MemberService {
         memberDto.setPassword(encodePassword);
         return memberRepository.save(memberDto.toEntity()).getId();
     }
+
+    public boolean isDuplicateEmail(String email) {
+        return memberRepository.existsMemberEntityByEmail(email);
+    }
 }

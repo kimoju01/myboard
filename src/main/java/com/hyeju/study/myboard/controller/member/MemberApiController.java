@@ -18,5 +18,14 @@ public class MemberApiController {
         return memberService.save(memberDto);
     }
 
+    @PostMapping("/members/duplicate")
+    public boolean isDuplicateEmail(@RequestBody(required = false) String email) {
+        System.out.println(email);
+        if (email == null) {
+           return true;
+        }
+        return memberService.isDuplicateEmail(email);
+    }
+
 
 }
