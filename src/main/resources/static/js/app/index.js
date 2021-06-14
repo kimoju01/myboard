@@ -18,7 +18,6 @@ var main = {
         });
 
         $('#email').on('keyup', function () {
-            console.log($(this).val());
             _this.checkEmail();
         });
 
@@ -27,7 +26,7 @@ var main = {
     save: function () {
         var data = {
                 title: $('#title').val(),
-                content: $('#content').val()
+                content: $('.summernote').summernote('code')
         };
         if (data.title == "" || data.content == "") {
             alert("정보를 모두 입력해주세요.");
@@ -51,7 +50,7 @@ var main = {
     update: function () {
         var data = {
             title: $('#title').val(),
-            content: $('#content').val()
+            content: $('.summernote').summernote('code')
         };
         if (data.title == "" || data.content == "") {
             alert("정보를 모두 입력해주세요.");
@@ -128,7 +127,6 @@ var main = {
             contentType: 'application/json; charset=utf-8',
             data: email
         }).done(function (data) {
-            console.log(data);
             if (data === true || !verifyEmail) {
                 $('#email.form-control').css('border-color', 'red');
                 $('#btn-user-join').attr('disabled', 'disabled');
