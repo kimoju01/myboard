@@ -55,13 +55,17 @@
 										</div>
 										<h3 class="heading"><a th:href="@{'/posts/' + ${board.id}}"><span th:text="${board.title}"
 																										 style="display: block; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; width: 288px;"></span></a></h3>
-										<div style="width: 288px; height:79px;"><span th:utext="${board.content}"
-																					style="display: block; overflow: hidden; text-overflow: ellipsis; max-height: 100%; word-break: break-all"></span></div>
+<!--										<div style="width: 288px; height:79px;"><span th:utext="${board.content}"-->
+<!--																					style="display: block; overflow: hidden; text-overflow: ellipsis; max-height: 100%; word-break: break-all"></span></div>-->
+										<div style="width: 288px; height:79px;"><div th:utext="${board.content}"
+																					  style="display: block; overflow: hidden; text-overflow: ellipsis; max-height: 100%; word-break: break-all"></div></div>
 										<div class="d-flex align-items-center mt-4 meta">
 <!--											<p class="mb-0"><a th:href="@{'/posts/' + ${board.id}}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>-->
 											<p class="ml-auto mb-0">
 												<a href="#" class="mr-2"><span th:text="${board.memberEntity.email}"></span></a>
-												<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>
+<!--												<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>-->
+												<span class="disqus-comment-count" th:data-disqus-identifier="${board.id}">0 Comments</span>
+<!--												<a th:href="@{'/posts/' + ${board.id}}#disqus_thread" data-disqus-identifier="${board.id}">Comments</a>-->
 											</p>
 										</div>
 									</div>
@@ -117,6 +121,11 @@
 				</div>
 			</div>
 		</section>
+
+		<!-- Disqus -->
+	  	<script id="dsq-count-scr" src="//hyeju-board.disqus.com/count.js" async></script>
+	  	<!-- Disqus End -->
+
 	  </body>
   </th:block>
 </html>
