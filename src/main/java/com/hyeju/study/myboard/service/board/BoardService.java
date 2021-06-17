@@ -47,10 +47,11 @@ public class BoardService {
     }
 
     /* 게시글 조회 */
-    @Transactional(readOnly = true)
+    @Transactional
     public BoardResponseDto findById(Long id) {
         BoardEntity boardEntity = boardRepository.findById(id)
                 .orElseThrow(() -> new IllegalArgumentException("존재하지 않는 게시글입니다. id=" + id));
+        boardEntity.upViewCount(boardEntity.getCount() + 1);
 
         return new BoardResponseDto(boardEntity);
     }
