@@ -45,4 +45,8 @@ public class BoardEntity extends TimeEntity {
         this.content = content;
     }
 
+    public void upViewCount(Long count) {
+        this.count = count;
+    }
+
 }
