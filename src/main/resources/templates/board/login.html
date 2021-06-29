@@ -5,28 +5,88 @@
 <head>
     <meta charset="UTF-8">
 <!--    <meta name="google-signin-scope" content="profile email">-->
-<!--    <meta name="google-signin-client_id" content="312110320208-dvsnf7uec20lvnie75h7mbf70kum0rcj.apps.googleusercontent.com.apps.googleusercontent.com">-->
+    <meta name="google-signin-client_id" content="312110320208-dvsnf7uec20lvnie75h7mbf70kum0rcj.apps.googleusercontent.com.apps.googleusercontent.com">
     <title>로그인</title>
 </head>
 <th:block layout:fragment="content">
     <body>
     <section class="ftco-section">
         <div class="container">
-            <h2>로그인 페이지</h2>
-<!--            <form>-->
-            <form th:action="@{/loginProc}" method="POST">
-<!--                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>-->
-                <div>이메일 : <input type="text" name="email" placeholder="이메일을 입력하세요"></div>
-                <div>비밀번호 : <input type="password" name="password" placeholder="비밀번호를 입력하세요"></div>
-                <div><button type="submit">로그인</button></div>
-<!--                <div><button type="button" id="btn-member-login">로그인</button></div>-->
-            </form>
-            <div><a th:href="@{/register}">이메일로 회원 가입</a></div>
-            <div><a th:href="@{/oauth2/authorization/google}" role="button">구글 계정으로 회원 가입</a></div>
-<!--            <div class="g-signin2" data-onsuccess="onSignIn" data-width="240" data-height="50" data-longtitle="true" data-theme="dark"></div>-->
-<!--            <div id="k-signin"><a th:href="@{/}" style="background-image: url('images/kakao_login_en_medium_wide_png');"></div>-->
+            <div class="login-form">
+                <form th:action="@{/loginProc}" method="POST">
+                    <div class="auth-box card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="text-center heading">Login</h2>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span class="fa fa-user"></span>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" name="email" placeholder="Email" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <span class="fa fa-lock"></span>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" name="password" placeholder="Password" required="required">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="submit" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20">Login</button>
+                                </div>
+                            </div>
+                            <div class="or-container">
+                                <div class="line-separator"></div>
+                                <div class="or-label">or</div>
+                                <div class="line-separator"></div>
+                            </div>
+                            <div class="text-center social-btn">
+                                <a href="#" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Sign in with <b>Facebook</b></a>
+                                <a href="#" class="btn btn-info btn-block"><span class="fa fa-twitter"></span> Sign in with <b>Twitter</b></a>
+                                <a href="#" class="btn btn-danger btn-block"><span class="fa fa-google"></span> Sign in with <b>Google</b></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="hint-text small">Don't have an account?<a th:href="@{/register}" class="text-success"> Register Now!</a></div>
+            </div>
         </div>
     </section>
+<!--    <section class="ftco-section">-->
+<!--        <div class="container">-->
+<!--            <h2>로그인 페이지</h2>-->
+<!--            <form th:action="@{/loginProc}" method="POST">-->
+<!--                <div class="form-group">-->
+<!--                    <label>이메일</label>-->
+<!--                    <input type="text" class="form-control" name="email" placeholder="이메일을 입력하세요">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label>비밀번호</label>-->
+<!--                    <input type="password" class="form-control" name="password" placeholder="비밀번호를 입력하세요">-->
+<!--                </div>-->
+<!--                <div>-->
+<!--                    <button type="submit" class="btn btn-outline-primary">로그인</button>-->
+<!--                </div>-->
+<!--            </form>-->
+<!--            <div><a th:href="@{/register}">이메일로 회원 가입</a></div>-->
+<!--            <div><a href="https://kauth.kakao.com/oauth/authorize?client_id=192ae19481f623fcfb044a05f17176cb&redirect_uri=http://localhost:8080/oauth/kakao/callback&response_type=code"><img src="/images/kakao_login_ko_medium_wide.png" alt="kakao_login"></a></div>-->
+<!--            <div id="my-signin2"></div>-->
+<!--            <div><a href=""></a><img src="/images/btn_google_signin_dark_normal_web.png" alt="google_login"></div>-->
+<!--&lt;!&ndash;            <div><a th:href="@{/oauth2/authorization/google}" role="button">구글 계정으로 회원 가입</a></div>&ndash;&gt;-->
+<!--&lt;!&ndash;            <div class="g-signin2" data-onsuccess="onSignIn" data-width="240" data-height="50" data-longtitle="true" data-theme="dark"></div>&ndash;&gt;-->
+<!--        </div>-->
+<!--    </section>-->
     </body>
 </th:block>
 </html>
