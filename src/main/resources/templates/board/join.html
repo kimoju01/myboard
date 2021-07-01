@@ -10,25 +10,88 @@
     <body>
     <section class="ftco-section">
         <div class="container">
-            <h2>회원가입 페이지</h2>
-            <form>
-                <div class="form-group">
-                    <label for="name">이름</label>
-                    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">
-                </div>
-                <div class="form-group">
-                    <label for="email">이메일</label>
-                    <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요">
-                </div>
-                <div class="form-group">
-                    <label for="password">비밀번호</label>
-                    <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">
-                </div>
-            </form>
-            <button type="button" class="btn btn-outline-primary" id="btn-user-join" disabled="disabled">회원가입</button>
-            <button type="button" class="btn btn-outline-dark" onclick="location.href='/loginPage'">취소</button>
+            <div class="login-form">
+                <form>
+                    <div class="auth-box card">
+                        <div class="card-block">
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <h2 class="text-center heading">J o i n !</h2>
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-envelope fa-fw"></i>
+                                        </span>
+                                    </div>
+                                    <input type="email" class="form-control" id="email" placeholder="Email" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-user fa-fw"></i>
+                                        </span>
+                                    </div>
+                                    <input type="text" class="form-control" id="name" placeholder="Name" required="required">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="input-group">
+                                    <div class="input-group-prepend">
+                                        <span class="input-group-text">
+                                            <i class="fa fa-lock fa-fw"></i>
+                                        </span>
+                                    </div>
+                                    <input type="password" class="form-control" id="password" placeholder="Password" required="required">
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col-md-12">
+                                    <button type="button" class="btn btn-primary btn-md btn-block waves-effect text-center m-b-20" id="btn-user-join">Join</button>
+                                </div>
+                            </div>
+                            <div class="or-container">
+                                <div class="line-separator"></div>
+                                <div class="or-label">or</div>
+                                <div class="line-separator"></div>
+                            </div>
+                            <div class="text-center social-btn">
+                                <a href="#" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Sign up with <b>Facebook</b></a>
+                                <a href="#" class="btn btn-info btn-block"><span class="fa fa-twitter"></span> Sign up with <b>Twitter</b></a>
+                                <a href="#" class="btn btn-danger btn-block"><span class="fa fa-google"></span> Sign up with <b>Google</b></a>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+                <div class="hint-text small">Already have an account?<a th:href="@{/login}" class="text-success"> Login Now!</a></div>
+            </div>
         </div>
     </section>
+<!--    <section class="ftco-section">-->
+<!--        <div class="container">-->
+<!--            <h2>회원가입 페이지</h2>-->
+<!--            <form>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="name">이름</label>-->
+<!--                    <input type="text" class="form-control" id="name" placeholder="이름을 입력하세요">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="email">이메일</label>-->
+<!--                    <input type="email" class="form-control" id="email" placeholder="이메일을 입력하세요">-->
+<!--                </div>-->
+<!--                <div class="form-group">-->
+<!--                    <label for="password">비밀번호</label>-->
+<!--                    <input type="password" class="form-control" id="password" placeholder="비밀번호를 입력하세요">-->
+<!--                </div>-->
+<!--            </form>-->
+<!--            <button type="button" class="btn btn-outline-primary" id="btn-user-join" disabled="disabled">회원가입</button>-->
+<!--            <button type="button" class="btn btn-outline-dark" onclick="location.href='/loginPage'">취소</button>-->
+<!--        </div>-->
+<!--    </section>-->
     </body>
 </th:block>
 </html>
