@@ -1,30 +1,29 @@
 package com.hyeju.study.myboard.controller;
 
+import com.hyeju.study.myboard.config.auth.KakaoOAuthService;
+import com.hyeju.study.myboard.config.auth.KakaoUserInfo;
 import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 import org.springframework.data.web.PageableDefault;
-import org.springframework.http.HttpEntity;
-import org.springframework.http.HttpHeaders;
-import org.springframework.http.HttpMethod;
-import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.util.LinkedMultiValueMap;
-import org.springframework.util.MultiValueMap;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
 @Controller
 public class HomeController {
 
     private final BoardService boardService;
+    private final KakaoOAuthService kakaoOAuthService;
 
     @GetMapping("/")
     public String index() {
@@ -58,34 +57,17 @@ public class HomeController {
     }
 
     @GetMapping("/oauth/kakao/callback")
-    public @ResponseBody String kakaoCallback(String code) {
-        // Post 방식으로 key=value 데이터를 카카오에게 요청 => RestTemplate 라이브러리 사용
-        RestTemplate rt = new RestTemplate();
-        // HttpHeader 오브젝트 생성
-        HttpHeaders headers = new HttpHeaders();
-        headers.add("Content-type", "application/x-www-form-urlencoded;charset=utf-8");
-        // 내가 지금 전송할 HTTP Body 데이터가 key=value 형태라고 알려준다
-
-        // HttpBody 오브젝트 생성
-        MultiValueMap<String, String> params = new LinkedMultiValueMap<>();
-        // Body 데이터를 담는다
-        params.add("grant_type", "authorization_code");
-        params.add("client_id", "192ae19481f623fcfb044a05f17176cb");
-        params.add("redirect_uri", "http://localhost:8080/oauth/kakao/callback");
-        params.add("code", code);
-
-        // HttpHeader와 HttpBody를 하나의 오브젝트에 담는다
-        HttpEntity<MultiValueMap<String, String>> kakaoTokenRequest = new HttpEntity<>(params, headers);
-
-        // Http 요청
-        ResponseEntity<String> response = rt.exchange(
-                "https://kauth.kakao.com/oauth/token",
-                HttpMethod.POST,
-                kakaoTokenRequest,  //HttpEntity 오브젝트
-                String.class
-        );
-
-        return "카카오 로그인 토큰 요청 완료 : " + response;
+    public String kakaoCallback(@RequestParam("code") String code) {
+        String accessToken = kakaoOAuthService.getAccessToken(code);
+        // 넘어온 코드 값으로 액세스 토큰 얻고
+        KakaoUserInfo kakaoUserInfo = kakaoOAuthService.getKakaoUserInfo(accessToken);
+        // 그 액세스 토큰으로 유저 정보 얻고
+        kakaoOAuthService.saveKakaoUser(kakaoUserInfo);
+        // 유저 정보로 회원가입 및 로그인 시킴
+//        Authentication authentication = authenticationManager
+//                .authenticate(new UsernamePasswordAuthenticationToken(memberDto.getEmail(), memberDto.getPassword()));
+//        SecurityContextHolder.getContext().setAuthentication(authentication);
+        return "redirect:/";
     }
 
     @GetMapping("/register")
