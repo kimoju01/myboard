@@ -2,17 +2,20 @@ package com.hyeju.study.myboard.config.auth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.hyeju.study.myboard.domain.member.Role;
 import com.hyeju.study.myboard.domain.member.repository.MemberRepository;
 import com.hyeju.study.myboard.dto.MemberDto;
 import com.hyeju.study.myboard.service.member.MemberService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.beans.factory.annotation.Value;
+import org.springframework.context.annotation.PropertySource;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.AuthenticationManager;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.authentication.*;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -21,16 +24,20 @@ import org.springframework.util.LinkedMultiValueMap;
 import org.springframework.util.MultiValueMap;
 import org.springframework.web.client.RestTemplate;
 
+import java.util.Collections;
 import java.util.UUID;
 
 @Service
 @RequiredArgsConstructor
+@PropertySource("classpath:application-oauth.properties")
 public class KakaoOAuthService {
 
     private final AuthenticationManager authenticationManager;
-    private final MemberRepository memberRepository;
     private final MemberService memberService;
-    private final BCryptPasswordEncoder encoder;
+
+    /* 카카오 아이디 비밀번호 설정에 사용할 더미 패스워드 */
+    @Value("${dummyPassword}")
+    private String dummyPassword;
 
     /* 카카오 액세스 토큰 받기 */
     /* 필수 파라미터 값들을 담아 POST로 요청 => 응답은 JSON 객체로 Redirect URI에 전달된다. */
@@ -111,38 +118,47 @@ public class KakaoOAuthService {
     }
 
 
-    /* 카카오 유저 회원가입 진행하기 */
-    /* 비밀번호는 받아올 수 없어서 임의의 값 지정해줌 */
+    /* 카카오 유저 회원가입 + 로그인 처리 진행하기 */
     @Transactional
     public void saveKakaoUser(KakaoUserInfo kakaoUserInfo) {
-        // UUID => 랜덤 32자 숫자 & 영어소문자 36자리 생성
-        String dummyPassword = UUID.randomUUID().toString();
-        String encodePassword = encoder.encode(dummyPassword);
+        /* 비밀번호는 카카오 유저 정보로 받아올 수 없어서 임의의 값 지정해줌 */
+        // @Value로 dummyPassword 프로퍼티 파일에 지정해놓음! UUID 로는 자꾸 값이 바껴서 로그인 처리가 안 됨..
+        // UUID => '-' 기호 포함한 랜덤 32자 숫자 & 영어소문자 36자리 생성
+//        String dummyPassword = UUID.randomUUID().toString().replaceAll("-", "");
+//        dummyPassword = dummyPassword.substring(0, 10); // - 기호는 없애고 10글자 짜리로 만듦
 
         MemberDto memberDto = MemberDto.builder()
                 .name(kakaoUserInfo.getProperties().getNickname())
                 .email("kakao_" + kakaoUserInfo.getKakao_account().getEmail())
-                .password(encodePassword)
+                .password(dummyPassword)    //@Value
                 .build();
 
-        System.out.println(memberDto.getEmail());
-        System.out.println(memberDto.getName());
-
-        boolean duplicateCheck = memberRepository.existsMemberEntityByEmail(memberDto.getEmail());
-        System.out.println(duplicateCheck);
-
-        if (!duplicateCheck) {  // 가입하지 않은 회원이면 가입 먼저 시키고 -> 로그인 처리
-            memberRepository.save(memberDto.toEntity());
+        /* 가입하지 않은 회원이면 가입 먼저 시키고  로그인 처리 할 수 있도록 중복 체크 */
+        boolean duplicateCheck = memberService.isDuplicateEmail(memberDto.getEmail());
+        if (!duplicateCheck) {
+            memberService.save(memberDto);
             System.out.println("회원 가입 완료");
         }
 
-        // 이미 가입한 회원이면 바로 로그인 처리할 수 있도록
+        /* 이미 가입한 회원이면 바로 로그인 처리할 수 있도록 */
         System.out.println("로그인 처리 시작");
-//        Authentication authentication = authenticationManager
-//                .authenticate(new UsernamePasswordAuthenticationToken(memberDto.getEmail(), memberDto.getPassword()));
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
-        System.out.println("로그인 처리 완료");
-
+        try {
+            Authentication authentication = authenticationManager
+                    .authenticate(new UsernamePasswordAuthenticationToken(memberDto.getEmail(), dummyPassword));    // 암호화 시킨 패스워드는 접근 못 해서 plain 패스워드로!!
+            SecurityContextHolder.getContext().setAuthentication(authentication);
+            System.out.println("로그인 처리 완료");
+        } catch (DisabledException | LockedException | BadCredentialsException e) {
+            String status;
+            if (e.getClass().equals(BadCredentialsException.class)) {
+                status = "invalid-password";
+            } else if (e.getClass().equals(DisabledException.class)) {
+                status = "locked";
+            } else if (e.getClass().equals(LockedException.class)) {
+                status = "disable";
+            } else {
+                status = "unknown";
+            }
+            System.out.println(status);
+        }
     }
-
 }
