@@ -16,7 +16,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 
 @RequiredArgsConstructor
 @Controller
@@ -64,9 +63,6 @@ public class HomeController {
         // 그 액세스 토큰으로 유저 정보 얻고
         kakaoOAuthService.saveKakaoUser(kakaoUserInfo);
         // 유저 정보로 회원가입 및 로그인 시킴
-//        Authentication authentication = authenticationManager
-//                .authenticate(new UsernamePasswordAuthenticationToken(memberDto.getEmail(), memberDto.getPassword()));
-//        SecurityContextHolder.getContext().setAuthentication(authentication);
         return "redirect:/";
     }
 
