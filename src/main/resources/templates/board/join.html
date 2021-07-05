@@ -60,9 +60,17 @@
                                 <div class="line-separator"></div>
                             </div>
                             <div class="text-center social-btn">
-                                <a href="#" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Sign up with <b>Facebook</b></a>
-                                <a href="#" class="btn btn-info btn-block"><span class="fa fa-twitter"></span> Sign up with <b>Twitter</b></a>
-                                <a href="#" class="btn btn-danger btn-block"><span class="fa fa-google"></span> Sign up with <b>Google</b></a>
+                                <button type="button" class="social-kakao-login" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=192ae19481f623fcfb044a05f17176cb&redirect_uri=http://localhost:8080/oauth/kakao/callback&response_type=code'">
+                                    <span>
+                                        <img src="images/kakaologo.png" style="width: 30px; height: 30px; float: left;">
+                                    </span>
+                                    <span style="justify-content: center; font-size: 1.5em;">
+                                        카카오 로그인
+                                    </span>
+                                </button>
+<!--                                <a href="#" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Sign up with <b>Facebook</b></a>-->
+<!--                                <a href="#" class="btn btn-info btn-block"><span class="fa fa-twitter"></span> Sign up with <b>Twitter</b></a>-->
+<!--                                <a href="#" class="btn btn-danger btn-block"><span class="fa fa-google"></span> Sign up with <b>Google</b></a>-->
                             </div>
                         </div>
                     </div>
