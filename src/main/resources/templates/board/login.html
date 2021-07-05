@@ -5,7 +5,7 @@
 <head>
     <meta charset="UTF-8">
 <!--    <meta name="google-signin-scope" content="profile email">-->
-    <meta name="google-signin-client_id" content="312110320208-dvsnf7uec20lvnie75h7mbf70kum0rcj.apps.googleusercontent.com.apps.googleusercontent.com">
+<!--    <meta name="google-signin-client_id" content="312110320208-dvsnf7uec20lvnie75h7mbf70kum0rcj.apps.googleusercontent.com.apps.googleusercontent.com">-->
     <title>로그인</title>
 </head>
 <th:block layout:fragment="content">
@@ -18,14 +18,14 @@
                         <div class="card-block">
                             <div class="row">
                                 <div class="col-md-12">
-                                    <h2 class="text-center heading">Login</h2>
+                                    <h2 class="text-center heading">L o g i n</h2>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <span class="fa fa-user"></span>
+                                            <i class="fa fa-envelope fa-fw"></i>
                                         </span>
                                     </div>
                                     <input type="text" class="form-control" name="email" placeholder="Email" required="required">
@@ -35,7 +35,7 @@
                                 <div class="input-group">
                                     <div class="input-group-prepend">
                                         <span class="input-group-text">
-                                            <span class="fa fa-lock"></span>
+                                            <i class="fa fa-lock fa-fw"></i>
                                         </span>
                                     </div>
                                     <input type="password" class="form-control" name="password" placeholder="Password" required="required">
@@ -52,9 +52,17 @@
                                 <div class="line-separator"></div>
                             </div>
                             <div class="text-center social-btn">
-                                <a href="#" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Sign in with <b>Facebook</b></a>
-                                <a href="#" class="btn btn-info btn-block"><span class="fa fa-twitter"></span> Sign in with <b>Twitter</b></a>
-                                <a href="#" class="btn btn-danger btn-block"><span class="fa fa-google"></span> Sign in with <b>Google</b></a>
+                                <button type="button" class="social-kakao-login" onclick="location.href='https://kauth.kakao.com/oauth/authorize?client_id=192ae19481f623fcfb044a05f17176cb&redirect_uri=http://localhost:8080/oauth/kakao/callback&response_type=code'">
+                                    <span>
+                                        <img src="images/kakaologo.png" style="width: 30px; height: 30px; float: left;">
+                                    </span>
+                                    <span style="justify-content: center; font-size: 1.5em;">
+                                        카카오 로그인
+                                    </span>
+                                </button>
+<!--                                <a href="https://kauth.kakao.com/oauth/authorize?client_id=192ae19481f623fcfb044a05f17176cb&redirect_uri=http://localhost:8080/oauth/kakao/callback&response_type=code" class="btn btn-info btn-block"><span class="fa fa-twitter"></span> Sign in with <b>Kakao</b></a>-->
+<!--                                <a href="#" class="btn btn-primary btn-block"><span class="fa fa-facebook"></span> Sign in with <b>Facebook</b></a>-->
+<!--                                <a href="#" class="btn btn-danger btn-block"><span class="fa fa-google"></span> Sign in with <b>Google</b></a>-->
                             </div>
                         </div>
                     </div>
