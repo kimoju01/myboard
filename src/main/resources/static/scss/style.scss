@@ -1,8 +1,24 @@
 @import 'bootstrap/bootstrap';
 @import 'bootstrap/variables';
 
-$font-primary: 'Poppins',Arial, sans-serif;
-$font-secondary: 'Cormorant Garamond',Georgia, serif;
+@font-face {
+	font-family: 'RIDIBatang';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+@font-face {
+	font-family: 'IBMPlexSansKR-Regular';
+	src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+	font-weight: normal;
+	font-style: normal;
+}
+
+//$font-primary: 'Poppins',Arial, sans-serif;
+//$font-secondary: 'Cormorant Garamond',Georgia, serif;
+$font-primary: 'IBMPlexSansKR-Regular',Arial, sans-serif;
+$font-secondary: 'RIDIBatang',Georgia, serif;
 
 $white: #fff;
 $black: #000000;
@@ -10,8 +26,6 @@ $darken: #232931;
 
 $primary: #e2c0bb;
 $secondary: #b2bbc9;
-
-
 
 @mixin border-radius($radius) {
   -webkit-border-radius: $radius;

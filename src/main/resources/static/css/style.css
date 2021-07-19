@@ -40,6 +40,20 @@
   -webkit-box-sizing: border-box;
   box-sizing: border-box; }
 
+@font-face {
+  font-family: 'RIDIBatang';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_twelve@1.0/RIDIBatang.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'IBMPlexSansKR-Regular';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_20-07@1.0/IBMPlexSansKR-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
 html {
   font-family: sans-serif;
   line-height: 1.15;
@@ -8001,7 +8015,8 @@ a.text-dark:hover, a.text-dark:focus {
     border-color: #dee2e6; } }
 
 body {
-  font-family: "Poppins", Arial, sans-serif;
+  /*font-family: "Poppins", Arial, sans-serif;*/
+  font-family: "IBMPlexSansKR-Regular", Arial, sans-serif;
   background: #fff;
   font-size: 16px;
   line-height: 1.8;
@@ -8028,7 +8043,8 @@ h1, h2, h3, h4, h5,
   line-height: 1.5;
   color: rgba(0, 0, 0, 0.9);
   font-weight: 400;
-  font-family: "Cormorant Garamond", Georgia, serif; }
+  /*font-family: "Cormorant Garamond", Georgia, serif; }*/
+  font-family: "RIDIBatang", Georgia, serif; }
 
 .text-primary {
   color: #e2c0bb !important; }
@@ -8271,7 +8287,8 @@ h1, h2, h3, h4, h5,
     z-index: 1;
     color: #fff; }
     .hero div.vr span {
-      font-family: "Cormorant Garamond", Georgia, serif;
+      /*font-family: "Cormorant Garamond", Georgia, serif;*/
+      font-family: "RIDIBatang", Georgia, serif;
       position: relative;
       font-size: 100px;
       font-weight: 300;
@@ -8425,7 +8442,8 @@ h1, h2, h3, h4, h5,
           font-size: 18px;
           letter-spacing: 1px;
           color: #fff;
-          font-family: "Cormorant Garamond", Georgia, serif;
+          /*font-family: "Cormorant Garamond", Georgia, serif;*/
+          font-family: "RIDIBatang", Georgia, serif;
           font-style: italic;
           position: relative; }
           .owl-carousel.home-slider .slider-item .slider-text .subheading:after {
@@ -8575,7 +8593,8 @@ h1, h2, h3, h4, h5,
   .slider-text .icon-video span {
     color: #fff; }
   .slider-text .icon-video span.watch {
-    font-family: "Poppins", Arial, sans-serif;
+    /*font-family: "Poppins", Arial, sans-serif;*/
+    font-family: "IBMPlexSansKR-Regular", Arial, sans-serif;
     font-size: 16px;
     text-transform: uppercase; }
 
@@ -8851,7 +8870,8 @@ h1, h2, h3, h4, h5,
       font-weight: 400;
       font-size: 14px;
       color: #fff;
-      font-family: "Poppins", Arial, sans-serif;
+      /*font-family: "Poppins", Arial, sans-serif;*/
+      font-family: "IBMPlexSansKR-Regular", Arial, sans-serif;
       -moz-transition: all 0.3s ease;
       -o-transition: all 0.3s ease;
       -webkit-transition: all 0.3s ease;
@@ -8946,7 +8966,8 @@ h1, h2, h3, h4, h5,
   width: 100%;
   margin-bottom: 50px; }
   .day-wrap h3 {
-    font-family: "Poppins", Arial, sans-serif;
+    /*font-family: "Poppins", Arial, sans-serif;*/
+    font-family: "IBMPlexSansKR-Regular", Arial, sans-serif;
     font-size: 16px;
     font-weight: 700;
     text-transform: uppercase;
@@ -9080,7 +9101,8 @@ h1, h2, h3, h4, h5,
     font-size: 18px;
     font-weight: 400;
     letter-spacing: 1px;
-    font-family: "Poppins", Arial, sans-serif; }
+    /*font-family: "Poppins", Arial, sans-serif; }*/
+    font-family: "IBMPlexSansKR-Regular", Arial, sans-serif; }
 
 .aside-stretch {
   background: #f1e1df; }
@@ -9880,6 +9902,12 @@ textarea.form-control {
 
 .m-b-20 {
   margin-bottom: 20px
+}
+
+.social-kakao-login {
+  background-color: #FEE500;
+  width: 100%;
+  height: 45px;
 }
 
 #ftco-loader {
