@@ -15,7 +15,7 @@
         <div class="container">
           <div class="row no-gutters slider-text align-items-end justify-content-start">
             <div class="col-md-9 ftco-animate pb-4">
-              <h1 class="mb-3 bread" th:text="${board.title}"></h1>
+<!--              <h1 class="mb-3 bread" th:text="${board.title}"></h1>-->
               <p class="breadcrumbs"><span class="mr-2"><a th:href="@{/}">Home <i class="ion-ios-arrow-forward"></i></a></span> <span class="mr-2"><a th:href="@{/posts}">Board <i class="ion-ios-arrow-forward"></i></a></span> <span>Post <i class="ion-ios-arrow-forward"></i></span></p>
             </div>
           </div>
@@ -178,40 +178,40 @@
 <!--              </div>-->
 
               <div class="sidebar-box ftco-animate">
-                <h3 class="heading-sidebar">Recent Post</h3>
-                <div class="block-21 mb-4 d-flex">
+                <h3 class="heading-sidebar">🔎 Recent Post</h3>
+                <div class="block-21 mb-4 d-flex" th:each="recentPost : ${recentPostList}">
 <!--                  <a class="blog-img mr-4" style="background-image: url('images/image_1.jpg');"></a>-->
                   <div class="text">
-                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
+                      <h3 class="heading"><a th:href="@{'/posts/' + ${recentPost.id}}"><span th:text="${recentPost.title}"></span></a></h3>
                     <div class="meta">
-                      <div><a href="#"><span class="icon-calendar"></span> April 04, 2019</a></div>
-                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                      <div><a href="#"><span class="icon-chat"></span> 19</a></div>
+                      <div><span class="icon-calendar" th:text="' ' + ${#temporals.format(recentPost.createdDate, 'yyyy-MM-dd HH:mm')}"></span></div>
+                      <div><span class="icon-person" th:text="' ' + ${recentPost.memberEntity.name}"></span></div>
+                      <div><span class="disqus-comment-count" th:data-disqus-identifier="${recentPost.id}">0 Comments</span></div>
                     </div>
                   </div>
                 </div>
-                <div class="block-21 mb-4 d-flex">
-<!--                  <a class="blog-img mr-4" style="background-image: url('images/image_2.jpg');"></a>-->
-                  <div class="text">
-                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    <div class="meta">
-                      <div><a href="#"><span class="icon-calendar"></span> April 04, 2019</a></div>
-                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                      <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                    </div>
-                  </div>
-                </div>
-                <div class="block-21 mb-4 d-flex">
-<!--                  <a class="blog-img mr-4" style="background-image: url('images/image_3.jpg');"></a>-->
-                  <div class="text">
-                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>
-                    <div class="meta">
-                      <div><a href="#"><span class="icon-calendar"></span> April 04, 2019</a></div>
-                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>
-                      <div><a href="#"><span class="icon-chat"></span> 19</a></div>
-                    </div>
-                  </div>
-                </div>
+<!--                <div class="block-21 mb-4 d-flex">-->
+<!--&lt;!&ndash;                  <a class="blog-img mr-4" style="background-image: url('images/image_2.jpg');"></a>&ndash;&gt;-->
+<!--                  <div class="text">-->
+<!--                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>-->
+<!--                    <div class="meta">-->
+<!--                      <div><a href="#"><span class="icon-calendar"></span> April 04, 2019</a></div>-->
+<!--                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>-->
+<!--                      <div><a href="#"><span class="icon-chat"></span> 19</a></div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
+<!--                <div class="block-21 mb-4 d-flex">-->
+<!--&lt;!&ndash;                  <a class="blog-img mr-4" style="background-image: url('images/image_3.jpg');"></a>&ndash;&gt;-->
+<!--                  <div class="text">-->
+<!--                    <h3 class="heading"><a href="#">Even the all-powerful Pointing has no control about the blind texts</a></h3>-->
+<!--                    <div class="meta">-->
+<!--                      <div><a href="#"><span class="icon-calendar"></span> April 04, 2019</a></div>-->
+<!--                      <div><a href="#"><span class="icon-person"></span> Admin</a></div>-->
+<!--                      <div><a href="#"><span class="icon-chat"></span> 19</a></div>-->
+<!--                    </div>-->
+<!--                  </div>-->
+<!--                </div>-->
               </div>
 
 <!--              <div class="sidebar-box ftco-animate">-->
@@ -233,6 +233,7 @@
       </section> <!-- .section -->
 
         <!-- Disqus -->
+        <script id="dsq-count-scr" src="//hyeju-board.disqus.com/count.js" async></script>
         <script th:inline="javascript">
           /**
            *  RECOMMENDED CONFIGURATION VARIABLES: EDIT AND UNCOMMENT THE SECTION BELOW TO INSERT DYNAMIC VALUES FROM YOUR PLATFORM OR CMS.
@@ -252,7 +253,6 @@
         </script>
         <noscript>Please enable JavaScript to view the <a href="https://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
         <!-- Disqus End -->
-
     </body>
   </th:block>
 </html>

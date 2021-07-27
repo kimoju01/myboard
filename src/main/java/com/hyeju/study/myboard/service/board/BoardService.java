@@ -12,6 +12,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+import java.util.stream.Collectors;
+
 @Service
 @RequiredArgsConstructor
 public class BoardService {
@@ -64,5 +67,12 @@ public class BoardService {
                 ? boardRepository.findAll(pageable)
                 : boardRepository.findByTitleContainingIgnoreCaseOrContentContainingIgnoreCase(keyword, keyword, pageable);
         return boardEntityList.map(boardEntity -> new BoardResponseDto(boardEntity)); // = return boardEntityList.map(BoardResponseDto::new);
+    }
+
+    /* 최근 3개 게시글 받아오기 */
+    @Transactional(readOnly = true)
+    public List<BoardResponseDto> getRecentPost() {
+        List<BoardEntity> boardEntityList = boardRepository.findTop3ByOrderByIdDesc();
+        return boardEntityList.stream().map(boardEntity -> new BoardResponseDto(boardEntity)).collect(Collectors.toList());
     }
 }

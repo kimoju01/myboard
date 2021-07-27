@@ -2,6 +2,7 @@ package com.hyeju.study.myboard.controller;
 
 import com.hyeju.study.myboard.config.auth.KakaoOAuthService;
 import com.hyeju.study.myboard.config.auth.KakaoUserInfo;
+import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
 import com.hyeju.study.myboard.dto.BoardResponseDto;
 import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
@@ -26,6 +27,7 @@ public class HomeController {
 
     @GetMapping("/")
     public String index() {
+        System.out.println(boardService.getRecentPost());
         return "index";
     }
 
@@ -40,6 +42,7 @@ public class HomeController {
     public String postsDetail(@PathVariable Long id, Model model) {
         BoardResponseDto responseDto = boardService.findById(id);
         model.addAttribute("board", responseDto);
+        model.addAttribute("recentPostList", boardService.getRecentPost());
         return "board/detail";
     }
 
