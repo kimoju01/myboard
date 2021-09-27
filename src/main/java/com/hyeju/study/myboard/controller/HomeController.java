@@ -26,8 +26,8 @@ public class HomeController {
     private final KakaoOAuthService kakaoOAuthService;
 
     @GetMapping("/")
-    public String index() {
-        System.out.println(boardService.getRecentPost());
+    public String index(Model model) {
+        model.addAttribute("recentPostList", boardService.getRecentPost());
         return "index";
     }
 
