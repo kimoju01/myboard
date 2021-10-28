@@ -32,7 +32,7 @@ public class HomeController {
     }
 
     @GetMapping("/posts")
-    public String list(@RequestParam(value = "keyword", required = false) String keyword, Model model, @PageableDefault(size = 2, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
+    public String list(@RequestParam(value = "keyword", required = false) String keyword, Model model, @PageableDefault(size = 6, sort = "id", direction = Sort.Direction.DESC) Pageable pageable) {
         model.addAttribute("boardList", boardService.listPost(pageable, keyword));
         model.addAttribute("maxPage", 5);
         return "board/list";
@@ -79,25 +79,10 @@ public class HomeController {
         return "board/login";
     }
 
-    @GetMapping("destination-single")
-    public String destination_single() {
-        return "destination-single";
-    }
-
-    @GetMapping("hotel")
-    public String hotel() {
-        return "hotel";
-    }
-
-    @GetMapping("hotel-single")
-    public String hotel_single() {
-        return "hotel-single";
-    }
-
-    @GetMapping("about")
-    public String about() {
-        return "about";
-    }
+//    @GetMapping("/about")
+//    public String about() {
+//        return "about";
+//    }
 
 
 

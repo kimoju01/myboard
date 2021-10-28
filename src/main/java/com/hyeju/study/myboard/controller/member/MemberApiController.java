@@ -20,7 +20,6 @@ public class MemberApiController {
 
     @PostMapping("/members/duplicate")
     public boolean isDuplicateEmail(@RequestBody(required = false) String email) {
-        System.out.println(email);
         if (email == null) {
            return true;
         }

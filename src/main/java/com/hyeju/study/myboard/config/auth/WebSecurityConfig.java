@@ -43,7 +43,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     public void configure(WebSecurity web) {
         web.ignoring().antMatchers("/css/**", "/scss/**", "/images/**", "/js/**", "/fonts/**", "/favicon.ico", "/error", "/h2-console/**");
-//        web.ignoring().antMatchers("/static/**", "/favicon.ico", "/error", "/h2-console/**");
     }
 
     @Override
@@ -62,20 +61,9 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                     .passwordParameter("password")
                     .permitAll()
                     .and()
-//                .oauth2Login()
-//                    .defaultSuccessUrl("/", true)
-//                    .and()
                 .logout()
                     .logoutSuccessUrl("/")
                     .permitAll();
-//                .and()
-//                .oauth2Login()
-//                .loginPage("/members/login");
-//                    .userInfoEndpoint()
-//                    .userService(customOAuth2UserService);
-//                    .and()
-//                .exceptionHandling()
-//                    .authenticationEntryPoint(new LoginUrlAuthenticationEntryPoint("/login"));
 
     }
 

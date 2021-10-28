@@ -3,7 +3,7 @@
 <th:blcok th:fragment="navFragment">
     <nav class="navbar navbar-expand-lg navbar-dark ftco_navbar bg-dark ftco-navbar-light site-navbar-target" id="ftco-navbar">
         <div class="container">
-            <a class="navbar-brand" th:href="@{/}">Hyeju's Board</a>
+            <a class="navbar-brand" th:href="@{/}">Hyeju-Board</a>
             <button class="navbar-toggler js-fh5co-nav-toggle fh5co-nav-toggle" type="button" data-toggle="collapse" data-target="#ftco-nav" aria-controls="ftco-nav" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="oi oi-menu"></span> Menu
             </button>
@@ -11,14 +11,10 @@
             <div class="collapse navbar-collapse" id="ftco-nav">
                 <ul class="navbar-nav nav ml-auto">
                     <li class="nav-item"><a th:href="@{/}" class="nav-link"><span>Home</span></a></li>
-                    <li class="nav-item"><a th:href="@{/about}" class="nav-link"><span>About</span></a></li>
+<!--                    <li class="nav-item"><a th:href="@{/about}" class="nav-link"><span>About</span></a></li>-->
                     <li class="nav-item"><a th:href="@{/posts}" class="nav-link"><span>Board</span></a></li>
-<!--                    <li class="nav-item"><a href="#destination-section" class="nav-link"><span>Destination</span></a></li>-->
-<!--                    <li class="nav-item"><a href="#hotel-section" class="nav-link"><span>Hotel</span></a></li>-->
-<!--                    <li class="nav-item"><a href="#restaurant-section" class="nav-link"><span>Restaurant</span></a></li>-->
                     <li class="nav-item"><a th:href="@{/logout}" class="nav-link" sec:authorize="isAuthenticated()"><span>Logout</span></a></li>
                     <li class="nav-item"><a th:href="@{/login}" class="nav-link" sec:authorize="!isAuthenticated()"><span>Login</span></a></li>
-<!--                    <li class="nav-item"><span sec:authorize="isAuthenticated()">Hello [[${#httpServletRequest.remoteUser}]]!</span></li>-->
                 </ul>
             </div>
         </div>
