@@ -14,7 +14,7 @@ import java.util.Collections;
 @Getter
 public class CustomUserDetails implements UserDetails {
 
-    private MemberEntity memberEntity;  //콤포지션 (MemberEntity를 품고있다.
+    private final MemberEntity memberEntity;
 
     public CustomUserDetails(MemberEntity memberEntity) {
         this.memberEntity = memberEntity;

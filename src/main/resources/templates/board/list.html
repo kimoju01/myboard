@@ -42,7 +42,7 @@
 						<div class="row">
 							<div class="col-md-6 col-lg-4 d-flex ftco-animate" th:each="board : ${boardList.content}">
 								<div class="blog-entry justify-content-end">
-									<a th:href="@{'/posts/' + ${board.id}}" class="block-20" th:style="'background-image: url(images/image_1.jpg)'">
+									<a th:href="@{'/posts/' + ${board.id}}" class="block-20" th:style="'background-image: url(images/image_5.jpg)'">
 									</a>
 									<div class="text float-right d-block">
 										<div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -66,7 +66,7 @@
 										<div class="d-flex align-items-center mt-4 meta">
 <!--											<p class="mb-0"><a th:href="@{'/posts/' + ${board.id}}" class="btn btn-primary">Read More <span class="ion-ios-arrow-round-forward"></span></a></p>-->
 											<p class="ml-auto mb-0">
-												<a href="#" class="mr-2"><span th:text="${board.memberEntity.name}"></span></a>
+												<a th:href="@{'/posts/' + ${board.id}}" class="mr-2"><span th:text="${board.memberEntity.name}"></span></a>
 <!--												<a href="#" class="meta-chat"><span class="icon-chat"></span> 3</a>-->
 												<span class="disqus-comment-count" th:data-disqus-identifier="${board.id}">0 Comments</span>
 <!--												<a th:href="@{'/posts/' + ${board.id}}#disqus_thread" data-disqus-identifier="${board.id}">Comments</a>-->
@@ -75,34 +75,6 @@
 									</div>
 								</div>
 							</div>
-<!--							<div class="col-md-6 col-lg-4 ftco-animate" th:each="board : ${boardList}">-->
-<!--								<div class="project">-->
-<!--									<div class="img">-->
-<!--										<div class="vr"><span>Sale</span></div>-->
-<!--										<a th:href="@{'/post/' + ${board.id}}"><img src="images/hotel-1.jpg" class="img-fluid" alt="Colorlib Template"></a>-->
-<!--									</div>-->
-<!--									<div class="text">-->
-<!--										<h4 class="price"><span class="old-price mr-2">$500</span>$400</h4>-->
-<!--										<span>3 nights</span>-->
-<!--										<h3><a th:href="@{'/post/' + ${board.id}}"><span th:text="${board.title}"></span></a></h3>-->
-<!--										<div class="star d-flex clearfix">-->
-<!--											<div class="mr-auto float-left">-->
-<!--												<span class="ion-ios-star"></span>-->
-<!--												<span class="ion-ios-star"></span>-->
-<!--												<span class="ion-ios-star"></span>-->
-<!--												<span class="ion-ios-star"></span>-->
-<!--												<span class="ion-ios-star"></span>-->
-<!--											</div>-->
-<!--											<div class="float-right">-->
-<!--												<span class="rate"><a href="#">(120)</a></span>-->
-<!--											</div>-->
-<!--										</div>-->
-<!--									</div>-->
-<!--									<a th:href="@{'/post/' + ${board.id}}" class="icon image-popup d-flex justify-content-center align-items-center">-->
-<!--										<span class="icon-expand"></span>-->
-<!--									</a>-->
-<!--								</div>-->
-<!--							</div>-->
 						</div>
 						<div class="row mt-5">
 						  <div class="col text-center">
