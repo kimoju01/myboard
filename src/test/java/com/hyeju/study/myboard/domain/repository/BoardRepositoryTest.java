@@ -2,6 +2,8 @@ package com.hyeju.study.myboard.domain.repository;
 
 import com.hyeju.study.myboard.domain.board.entity.BoardEntity;
 import com.hyeju.study.myboard.domain.board.repository.BoardRepository;
+import com.hyeju.study.myboard.domain.member.entity.MemberEntity;
+import com.hyeju.study.myboard.domain.member.repository.MemberRepository;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
@@ -34,7 +36,6 @@ class BoardRepositoryTest {
         boardRepository.save(BoardEntity.builder()
                 .title(title)
                 .content(content)
-                .writer("kim")
                 .build());
         //when
         List<BoardEntity> boardEntityList = boardRepository.findAll();
@@ -52,7 +53,6 @@ class BoardRepositoryTest {
         boardRepository.save(BoardEntity.builder()
                 .title("title")
                 .content("content")
-                .writer("writer")
                 .build());
         //when
         List<BoardEntity> boardEntityList = boardRepository.findAll();
