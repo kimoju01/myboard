@@ -79,6 +79,11 @@ public class HomeController {
         return "board/login";
     }
 
+    @GetMapping("/access-denied")
+    public String showAccessDeniedPage() {
+        return "access-denied";
+    }
+
 //    @GetMapping("/about")
 //    public String about() {
 //        return "about";
