@@ -8,6 +8,7 @@ import com.hyeju.study.myboard.service.board.BoardService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
 
@@ -31,6 +32,7 @@ public class BoardApiController {
     }
 
     /* 게시글 수정 */
+    @PreAuthorize("#requestDto.email == principal.username")
     @PutMapping("/posts/{id}")
     public Long update(@PathVariable Long id, @RequestBody BoardUpdateRequestDto requestDto) {
         return boardService.update(id, requestDto);

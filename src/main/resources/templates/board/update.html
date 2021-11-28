@@ -13,6 +13,7 @@
             <h2 class="text-center heading" style="padding: 30px 0px 30px 0px;">🌹 글 수정 🌹</h2>
             <form>
                 <input type="hidden" id="id" th:value="${board.id}">
+                <input type="hidden" id="email" th:value="${board.memberEntity.email}">
                 <div class="form-group">
                     <label for="title">제목</label>
                     <input type="text" class="form-control" id="title" th:value="${board.title}">

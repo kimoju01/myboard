@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
+      layout:decorator="~{layout/default}">
+<head>
+    <meta charset="UTF-8">
+    <title>Hyeju-Board</title>
+</head>
+<th:blcok layout:fragment="content">
+    <body>
+        <section class="ftco-section">
+            <div class="container">
+                <h1>🙅‍♀️잘못된 접근입니다!</h1>
+                <p>
+                    <a th:href="@{/}">처음 화면으로 돌아가기</a>
+                </p>
+            </div>
+        </section>
+    </body>
+</th:blcok>
+</html>

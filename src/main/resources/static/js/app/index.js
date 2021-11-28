@@ -50,6 +50,7 @@ var main = {
     update: function () {
         var data = {
             title: $('#title').val(),
+            email: $('#email').val(),
             content: $('.summernote').summernote('code')
         };
         if (data.title == "" || data.content == "") {
@@ -68,8 +69,12 @@ var main = {
         }).done(function () {
             alert("글이 수정되었습니다.");
             window.location.href = '/posts/' + id;
-        }).fail(function (error) {
-            alert(JSON.stringify(error));
+        }).fail(function (request, status, error) {
+            if(request.status === 403 || request.status === 405) {
+                alert("접근 권한이 없습니다.");
+            } else {
+                alert(JSON.stringify(error));
+            }
         });
     },
 
