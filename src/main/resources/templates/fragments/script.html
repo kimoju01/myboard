@@ -15,20 +15,78 @@
     <script th:src="@{/js/aos.js}"></script>
     <script th:src="@{/js/jquery.animateNumber.min.js}"></script>
     <script th:src="@{/js/scrollax.min.js}"></script>
-    <script th:src="@{https://maps.googleapis.com/maps/api/js?key=AIzaSyBVWaKrjvy3MaE7SQ74_uJiULgl1JY0H2s&sensor=false}"></script>
-    <script th:src="@{/js/google-map.js}"></script>
     <script th:src="@{/js/app/index.js}"></script>
 
     <!-- summernote -->
     <script th:src="@{/js/summernote-lite.js}"></script>
     <script th:src="@{/js/summernote-ko-KR.js}"></script>
+<!--    <script>-->
+<!--        $('.summernote').summernote({-->
+<!--            height: 300,-->
+<!--            lang: "ko-KR"-->
+<!--        });-->
+<!--    </script>-->
+
     <script>
         $('.summernote').summernote({
             height: 300,
-            lang: "ko-KR"
+            lang: "ko-KR",
+
+            // 이미지 파일 첨부할 때 마다 콜백 함수 호출
+            callbacks: {
+                onImageUpload: function (files) {
+                    for (var i = files.length - 1; i >= 0; i--) {
+                        uploadSummernoteImageFile(files[i], this);
+                        // onImageUpload: function (files) {
+                        //         uploadSummernoteImageFile(files[0], this);
+                        console.log(files[0]);
+                    }
+                }
+            }
         });
+
+        function uploadSummernoteImageFile(file) {
+            data = new FormData();
+            data.append("file", file);
+
+            $.ajax({
+                data: data,
+                type: 'POST',
+                url: '/image',
+                cache: false,
+                enctype: 'multipart/form-data',
+                contentType: false,
+                processData: false,
+                success: function (data) {
+                    // data = JSON.parse(data);
+                    $('.summernote').summernote('insertImage', data.url);
+                }
+            });
+        }
+
     </script>
 
+    <!-- google login button -->
+<!--    <script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>-->
+<!--    <script>-->
+<!--        function onSuccess(googleUser) {-->
+<!--            console.log('Logged in as: ' + googleUser.getBasicProfile().getName());-->
+<!--        }-->
+<!--        function onFailure(error) {-->
+<!--            console.log(error);-->
+<!--        }-->
+<!--        function renderButton() {-->
+<!--            gapi.signin2.render('my-signin2', {-->
+<!--                'scope': 'profile email',-->
+<!--                'width': 300,-->
+<!--                'height': 45,-->
+<!--                'longtitle': true,-->
+<!--                'theme': 'dark',-->
+<!--                'onsuccess': onSuccess,-->
+<!--                'onfailure': onFailure-->
+<!--            });-->
+<!--        }-->
+<!--    </script>-->
 <!--    <script src="https://apis.google.com/js/platform.js" async defer></script>-->
 
     <script th:src="@{/js/main.js}"></script>
