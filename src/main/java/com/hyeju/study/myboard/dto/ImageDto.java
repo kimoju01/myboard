@@ -12,15 +12,15 @@ import lombok.Setter;
 public class ImageDto {
     private String origFileName;
     private String fileName;
-//    private String filePath;
+    private String filePath;
     private String contentType;
     private Long fileSize;
 
     @Builder
-    public ImageDto(String origFileName, String fileName, String contentType, Long fileSize) {
+    public ImageDto(String origFileName, String fileName, String filePath, String contentType, Long fileSize) {
         this.origFileName = origFileName;
         this.fileName = fileName;
-//        this.filePath = filePath;
+        this.filePath = filePath;
         this.contentType = contentType;
         this.fileSize = fileSize;
     }
@@ -29,7 +29,7 @@ public class ImageDto {
         return ImageEntity.builder()
                 .origFileName(origFileName)
                 .fileName(fileName)
-//                .filePath(filePath)
+                .filePath(filePath)
                 .contentType(contentType)
                 .fileSize(fileSize)
                 .build();

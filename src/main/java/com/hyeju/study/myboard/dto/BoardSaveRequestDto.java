@@ -15,13 +15,17 @@ public class BoardSaveRequestDto {
     private String content;
     private Long count;
     private MemberEntity memberEntity;
+    private String thumbFileName;
+    private String thumbFilePath;
 
     @Builder
-    public BoardSaveRequestDto(String title, String content, Long count, MemberEntity memberEntity) {
+    public BoardSaveRequestDto(String title, String content, Long count, MemberEntity memberEntity, String thumbFileName, String thumbFilePath) {
         this.title = title;
         this.content = content;
         this.count = count;
         this.memberEntity = memberEntity;
+        this.thumbFileName = thumbFileName;
+        this.thumbFilePath = thumbFilePath;
     }
 
     public BoardEntity toEntity() {
@@ -30,6 +34,8 @@ public class BoardSaveRequestDto {
                 .content(content)
                 .count(count)
                 .memberEntity(memberEntity)
+                .thumbFileName(thumbFileName)
+                .thumbFilePath(thumbFilePath)
                 .build();
     }
 }

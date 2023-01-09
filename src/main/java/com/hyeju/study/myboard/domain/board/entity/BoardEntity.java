@@ -6,7 +6,6 @@ import lombok.AccessLevel;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import org.hibernate.annotations.ColumnDefault;
 
 import javax.persistence.*;
 
@@ -28,21 +27,34 @@ public class BoardEntity extends TimeEntity {
     @Column(length = 100)
     private Long count;
 
+    private String thumbFileName;
+
+    private String thumbFilePath;
+
     @ManyToOne  //Many = Board / One = User : 한 명의 멤버는 여러개의 게시글을 쓸 수 있다.
     @JoinColumn(name="memId")
     private MemberEntity memberEntity;
 
     @Builder
-    public BoardEntity(String title, String content, Long count, MemberEntity memberEntity) {
+    public BoardEntity(String title, String content, Long count, MemberEntity memberEntity, String thumbFileName, String thumbFilePath) {
         this.title = title;
         this.content = content;
         this.count = count;
         this.memberEntity = memberEntity;
+        this.thumbFileName = thumbFileName;
+        this.thumbFilePath = thumbFilePath;
     }
 
     public void update(String title, String content) {
         this.title = title;
         this.content = content;
+    }
+
+    public void updateWithFile(String title, String content, String thumbFileName, String thumbFilePath) {
+        this.title = title;
+        this.content = content;
+        this.thumbFileName = thumbFileName;
+        this.thumbFilePath = thumbFilePath;
     }
 
     public void upViewCount(Long count) {

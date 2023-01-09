@@ -5,7 +5,7 @@
   <head>
     <title>Hyeju-Board</title>
   </head>
-  <th:blcok layout:fragment="content">
+  <th:block layout:fragment="content">
 	  <body data-spy="scroll" data-target=".site-navbar-target" data-offset="300">
 		  <section class="ftco-intro img" id="hotel-section" style="background-image: url('images/bg_5.jpg'); background-position: inherit;">
 			  <div class="overlay"></div>
@@ -33,7 +33,7 @@
 				  <div class="row d-flex">
 					  <div class="col-md-6 col-lg-4 d-flex ftco-animate" th:each="recentPost : ${recentPostList}">
 						  <div class="blog-entry justify-content-end">
-							  <a th:href="@{'/posts/' + ${recentPost.id}}" class="block-20" style="background-image: url('images/image_4.jpg');">
+							  <a th:href="@{'/posts/' + ${recentPost.id}}" class="block-20" th:style="${recentPost.getThumbFilePath == null} ? 'background-image: url(images/image_5.jpg)' : 'background-image: url('+ @{'/thumbnailImage/' + ${recentPost.thumbFileName}} +')'">
 							  </a>
 							  <div class="text float-right d-block">
 								  <div class="d-flex align-items-center pt-2 mb-4 topp">
@@ -73,5 +73,5 @@
 		  <!-- Disqus End -->
 
 	  </body>
-  </th:blcok>
+  </th:block>
 </html>
