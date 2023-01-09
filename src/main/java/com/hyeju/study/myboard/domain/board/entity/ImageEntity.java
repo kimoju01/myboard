@@ -25,8 +25,8 @@ public class ImageEntity extends TimeEntity {
     @Column(nullable = false)
     private String fileName;
 
-//    @Column(nullable = false)
-//    private String filePath;
+    @Column(nullable = false)
+    private String filePath;
 
     @Column(nullable = false)
     private String contentType;
@@ -34,12 +34,13 @@ public class ImageEntity extends TimeEntity {
     private Long fileSize;
 
     @Builder
-    public ImageEntity(String origFileName, String fileName, String contentType, Long fileSize) {
+    public ImageEntity(String origFileName, String fileName, String filePath, String contentType, Long fileSize) {
         this.origFileName = origFileName;
         this.fileName = fileName;
-//        this.filePath = filePath;
+        this.filePath = filePath;
         this.contentType = contentType;
         this.fileSize = fileSize;
+
     }
 
 

@@ -35,11 +35,13 @@
             // 이미지 파일 첨부할 때 마다 콜백 함수 호출
             callbacks: {
                 onImageUpload: function (files) {
-                    for (var i = files.length - 1; i >= 0; i--) {
+                    // for (var i = files.length - 1; i >= 0; i--) {
+                    for (var i = 0; i < files.length; i++) {
                         uploadSummernoteImageFile(files[i], this);
                         // onImageUpload: function (files) {
                         //         uploadSummernoteImageFile(files[0], this);
-                        console.log(files[0]);
+                        // console.log(files[0]);
+                        console.log(files[i]);
                     }
                 }
             }
@@ -47,7 +49,7 @@
 
         function uploadSummernoteImageFile(file) {
             data = new FormData();
-            data.append("file", file);
+            data.append('file', file);
 
             $.ajax({
                 data: data,
@@ -58,9 +60,14 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    // data = JSON.parse(data);
+                //     // data = JSON.parse(data);
+
                     $('.summernote').summernote('insertImage', data.url);
                 }
+                // success: function (url) {
+                    // data = JSON.parse(data);
+                    // $('.summernote').summernote('insertImage', url);
+                // }
             });
         }
 
