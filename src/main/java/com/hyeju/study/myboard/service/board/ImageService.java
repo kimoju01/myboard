@@ -20,8 +20,7 @@ public class ImageService {
     private final ImageRepository imageRepository;
 
     public JsonObject saveSummernoteImage(MultipartFile multipartFile) throws Exception {
-
-        String fileRoot = "C:\\summernote_image\\";
+        String fileRoot = "C:\\Study\\Project_documents\\myboard_documents\\Summernote_Image\\";
         String originalFileName = multipartFile.getOriginalFilename();
         String extension = originalFileName.substring(originalFileName.lastIndexOf("."));
         String savedFileName = UUID.randomUUID() + extension; // 저장될 파일 명
@@ -34,21 +33,21 @@ public class ImageService {
             imageDto.setFileName(savedFileName);
             imageDto.setContentType(multipartFile.getContentType());
             imageDto.setFileSize(multipartFile.getSize());
-
+            imageDto.setFilePath(fileRoot + savedFileName);
             imageRepository.save(imageDto.toEntity());
 
         } catch (Exception e) {
             throw new Exception("Failed to store file " + multipartFile.getOriginalFilename(), e);
         }
 
-        File targetFile = new File(fileRoot + savedFileName);
-
         JsonObject jsonObject = new JsonObject();
+
+        File targetFile = new File(fileRoot + savedFileName);
 
         try {
             InputStream fileStream = multipartFile.getInputStream();
             FileUtils.copyInputStreamToFile(fileStream, targetFile);
-            jsonObject.addProperty("url", "/summernoteImage/" + savedFileName); // key, value 추가
+            jsonObject.addProperty("url", "/summernoteImage/" + savedFileName); // key, value 추가);
             jsonObject.addProperty("responseCode", "success");
 
         } catch (IOException e) {

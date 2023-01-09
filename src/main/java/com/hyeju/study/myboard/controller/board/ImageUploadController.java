@@ -2,7 +2,6 @@ package com.hyeju.study.myboard.controller.board;
 
 import com.hyeju.study.myboard.service.board.ImageService;
 import lombok.RequiredArgsConstructor;
-import net.minidev.json.JSONObject;
 import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -21,7 +20,6 @@ public class ImageUploadController {
     public ResponseEntity<?> uploadSummernoteImage(@RequestParam("file") MultipartFile multipartFile) {
         try {
             return ResponseEntity.ok(imageService.saveSummernoteImage(multipartFile));
-
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.badRequest().build();
