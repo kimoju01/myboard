@@ -42,7 +42,7 @@
 						<div class="row">
 							<div class="col-md-6 col-lg-4 d-flex ftco-animate" th:each="board : ${boardList.content}">
 								<div class="blog-entry justify-content-end">
-									<a th:href="@{'/posts/' + ${board.id}}" class="block-20" th:style="'background-image: url(images/image_5.jpg)'">
+									<a th:href="@{'/posts/' + ${board.id}}" class="block-20" th:style="${board.getThumbFilePath == null} ? 'background-image: url(images/image_5.jpg)' : 'background-image: url('+ @{'/thumbnailImage/' + ${board.thumbFileName}} +')'">
 									</a>
 									<div class="text float-right d-block">
 										<div class="d-flex align-items-center pt-2 mb-4 topp">
