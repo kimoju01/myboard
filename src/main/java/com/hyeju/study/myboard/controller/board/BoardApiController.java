@@ -11,6 +11,9 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
+
+import java.io.IOException;
 
 @RestController // Post-Create, Get-Read, Put-Update, Delete-Delete
 @RequiredArgsConstructor
@@ -27,15 +30,22 @@ public class BoardApiController {
 
     /* 게시글 등록 */
     @PostMapping("/posts")
-    public Long save(@RequestBody BoardSaveRequestDto requestDto, @AuthenticationPrincipal CustomUserDetails customUserDetails) {
-        return boardService.save(requestDto, customUserDetails.getMemberEntity());
+//    public Long save(@RequestBody BoardSaveRequestDto requestDto,
+    // file은 JSON에 포함될 수 없고 JSON, file을 포함한 다중 요청 처리하기 위해 @RequestPart 사용
+    public Long save(@RequestPart(value = "boardInfo") BoardSaveRequestDto requestDto,
+                     @RequestPart(value = "file", required = false) MultipartFile multipartFile,
+                     @AuthenticationPrincipal CustomUserDetails customUserDetails) throws IOException {
+        return boardService.save(requestDto, multipartFile, customUserDetails.getMemberEntity());
     }
 
     /* 게시글 수정 */
     @PreAuthorize("#requestDto.email == principal.username")
     @PutMapping("/posts/{id}")
-    public Long update(@PathVariable Long id, @RequestBody BoardUpdateRequestDto requestDto) {
-        return boardService.update(id, requestDto);
+    public Long update(@PathVariable Long id,
+                       @RequestPart(value = "boardInfo") BoardUpdateRequestDto requestDto,
+                       @RequestPart(value = "oldThumbFileName", required = false) String oldThumbFileName,
+                       @RequestPart(value = "file", required = false) MultipartFile multipartFile) throws IOException {
+        return boardService.update(id, requestDto, oldThumbFileName, multipartFile);
     }
 
     /* 게시글 삭제 */
