@@ -15,6 +15,8 @@ public class BoardResponseDto {
     private LocalDateTime createdDate;
     private LocalDateTime modifiedDate;
     private MemberEntity memberEntity;
+    private String thumbFileName;
+    private String thumbFilePath;
 
     public BoardResponseDto(BoardEntity boardEntity) {
         this.id = boardEntity.getId();
@@ -24,6 +26,8 @@ public class BoardResponseDto {
         this.createdDate = boardEntity.getCreatedDate();
         this.modifiedDate = boardEntity.getModifiedDate();
         this.memberEntity = boardEntity.getMemberEntity();
+        this.thumbFileName = boardEntity.getThumbFileName();
+        this.thumbFilePath = boardEntity.getThumbFilePath();
     }
 
 }
