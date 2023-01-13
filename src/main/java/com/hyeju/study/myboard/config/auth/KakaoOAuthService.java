@@ -54,7 +54,7 @@ public class KakaoOAuthService {
         params.add("grant_type", "authorization_code");
         params.add("client_id", "192ae19481f623fcfb044a05f17176cb");
 //        params.add("redirect_uri", "http://localhost:8080/oauth/kakao/callback");
-        params.add("redirect_uri", "http://ec2-54-180-54-6.ap-northeast-2.compute.amazonaws.com:8080/oauth/kakao/callback");
+        params.add("redirect_uri", "http://ec2-3-39-143-158.ap-northeast-2.compute.amazonaws.com:8080/oauth/kakao/callback");
         params.add("code", code);
 
         // HttpHeader와 HttpBody를 하나의 오브젝트에 담는다
