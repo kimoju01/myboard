@@ -19,29 +19,35 @@ public class ImageEntity extends TimeEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private String origFileName;
+//    @Column(nullable = false)
+//    private String origFileName;
 
-    @Column(nullable = false)
-    private String fileName;
+//    @Column(nullable = false)
+//    private String fileName;
 
     @Column(nullable = false)
     private String filePath;
 
-    @Column(nullable = false)
-    private String contentType;
+//    @Column(nullable = false)
+//    private String contentType;
 
-    private Long fileSize;
+//    private Long fileSize;
 
     @Builder
-    public ImageEntity(String origFileName, String fileName, String filePath, String contentType, Long fileSize) {
-        this.origFileName = origFileName;
-        this.fileName = fileName;
+    public ImageEntity(String filePath) {
         this.filePath = filePath;
-        this.contentType = contentType;
-        this.fileSize = fileSize;
-
     }
+
+    /* 로컬 환경 */
+//    @Builder
+//    public ImageEntity(String origFileName, String fileName, String filePath, String contentType, Long fileSize) {
+//        this.origFileName = origFileName;
+//        this.fileName = fileName;
+//        this.filePath = filePath;
+//        this.contentType = contentType;
+//        this.fileSize = fileSize;
+//
+//    }
 
 
 }
