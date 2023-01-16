@@ -12,6 +12,7 @@ import org.springframework.web.multipart.MultipartFile;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
+import java.util.Objects;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -61,7 +62,7 @@ public class S3Uploader {
     }
 
     private Optional<File> convertMultipartFileToFile(MultipartFile multipartFile) throws IOException {
-        File convertFile = new File(multipartFile.getOriginalFilename());
+        File convertFile = new File(Objects.requireNonNull(multipartFile.getOriginalFilename()));
         if (convertFile.createNewFile()) {  // 파일 성공적으로 생성하면 true
             try (FileOutputStream fos = new FileOutputStream(convertFile)) {
                 // FileOutputStream 두 번째 파라미터가 true면 기존 파일이 있을 경우 기존 파일에 내용 이어붙임.
