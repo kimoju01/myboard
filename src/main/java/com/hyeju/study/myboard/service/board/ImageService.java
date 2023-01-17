@@ -23,7 +23,7 @@ public class ImageService {
 
     private final S3Uploader s3Uploader;
 
-    public String saveSummernoteImage(MultipartFile multipartFile) throws Exception {
+    public JsonObject saveSummernoteImage(MultipartFile multipartFile) throws Exception {
 
         String uploadImageUrl = s3Uploader.upload(multipartFile, "SummernoteImage");
         System.out.println(uploadImageUrl);
@@ -46,7 +46,7 @@ public class ImageService {
             e.printStackTrace();
         }
 
-        return jsonObject.toString();
+        return jsonObject;
     }
 
 
