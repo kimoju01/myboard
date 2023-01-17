@@ -60,14 +60,14 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                    var imgurl = $('<img>').attr({
-                        'src': data.url
-                    });
-
-                    $('.summernote').summernote('insertImage', imgurl[0]);
+                    $('.summernote').summernote('insertImage', data.url);
                 }
                 // success: function (data) {
-                //     $('.summernote').summernote('insertImage', data.url);
+                //     var imgurl = $('<img>').attr({
+                //         'src': data.url
+                //     });
+                //
+                //     $('.summernote').summernote('insertImage', imgurl[0]);
                 // }
                 // success: function (url) {
                     // data = JSON.parse(data);
