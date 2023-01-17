@@ -26,6 +26,7 @@ public class ImageService {
     public String saveSummernoteImage(MultipartFile multipartFile) throws Exception {
 
         String uploadImageUrl = s3Uploader.upload(multipartFile, "SummernoteImage");
+        System.out.println(uploadImageUrl);
 
         // 이미지 경로 DB 저장
         ImageDto imageDto = new ImageDto();
