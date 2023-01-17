@@ -38,7 +38,7 @@ public class ImageService {
 
         JsonObject jsonObject = new JsonObject();
         try {
-            jsonObject.addProperty("url", "uploadImageUrl");
+            jsonObject.addProperty("url", uploadImageUrl);
             jsonObject.addProperty("responseCode", "success");
         } catch (Exception e) {
             jsonObject.addProperty("responseCode", "error");
