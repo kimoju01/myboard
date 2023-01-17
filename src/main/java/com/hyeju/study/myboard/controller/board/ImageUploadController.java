@@ -18,13 +18,16 @@ public class ImageUploadController {
 
     private final ImageService imageService;
 
-    private final S3Uploader s3Uploader;
-
     @PostMapping(value = "/image", produces = "application/json")
     @ResponseBody
     /* S3 업로드 */
-    public String uploadSummernoteImage(@RequestParam("file") MultipartFile multipartFile) throws Exception {
-        return imageService.saveSummernoteImage(multipartFile);
+    public ResponseEntity<?> uploadSummernoteImage(@RequestParam("file") MultipartFile multipartFile) throws Exception {
+        try {
+            return ResponseEntity.ok(imageService.saveSummernoteImage(multipartFile));
+        } catch (Exception e) {
+            e.printStackTrace();
+            return ResponseEntity.badRequest().build();
+        }
 //        return s3Uploader.upload(multipartFile, "SummernoteImage");
     }
 
