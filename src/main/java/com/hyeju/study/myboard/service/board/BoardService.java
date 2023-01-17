@@ -75,7 +75,8 @@ public class BoardService {
         if (multipartFile != null && multipartFile.getSize() > 0) {  // 새로운 파일이 전송된 경우 (사이즈가 0보다 큰 경우) => != null 조건 없으면 에러나네
             if (oldThumbFileName != null) {  // 기존에 썸네일 이미지가 존재했던 경우
                 // 기존 존재하던 썸네일 이미지 삭제
-                s3Uploader.removeObject(oldThumbFileName);
+                s3Uploader.removeObject("/ThumbnailImage/" + oldThumbFileName);
+                System.out.println(oldThumbFileName);
             }
 
             // 새 썸네일 이미지 저장
@@ -139,7 +140,7 @@ public class BoardService {
 
         // 썸네일 이미지가 존재한다면 이미지도 같이 삭제
         if (boardEntity.getThumbFilePath() != null) {
-            s3Uploader.removeObject(boardEntity.getThumbFileName());
+            s3Uploader.removeObject("/ThumbnailImage/" + boardEntity.getThumbFileName());
         }
 
         boardRepository.delete(boardEntity);
