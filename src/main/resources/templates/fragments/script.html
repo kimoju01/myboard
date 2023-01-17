@@ -60,10 +60,15 @@
                 contentType: false,
                 processData: false,
                 success: function (data) {
-                //     // data = JSON.parse(data);
+                    var imgurl = $('<img>').attr({
+                        'src': data.url
+                    });
 
-                    $('.summernote').summernote('insertImage', data.url);
+                    $('.summernote').summernote('insertImage', imgurl);
                 }
+                // success: function (data) {
+                //     $('.summernote').summernote('insertImage', data.url);
+                // }
                 // success: function (url) {
                     // data = JSON.parse(data);
                     // $('.summernote').summernote('insertImage', url);
