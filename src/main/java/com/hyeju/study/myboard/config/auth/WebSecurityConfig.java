@@ -50,7 +50,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         http
                 .csrf().disable()
                 .authorizeRequests()
-                    .antMatchers("/", "/about",  "/login", "/register", "/api/v1/**", "/oauth/kakao/callback").permitAll()
+                    .antMatchers("/", "/about",  "/login", "/register", "/api/v1/**", "/oauth/kakao/callback", "/thumbnailImage/**").permitAll()
                     .anyRequest().authenticated()
                     .and()
                 .formLogin()
