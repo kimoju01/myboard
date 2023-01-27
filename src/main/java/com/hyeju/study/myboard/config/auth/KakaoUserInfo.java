@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class KakaoUserInfo {
 
-    public Integer id;
+    public Long id;
     public String connected_at;
     public Properties properties;
     public KakaoAccount kakao_account;
@@ -21,7 +21,7 @@ public class KakaoUserInfo {
     public class KakaoAccount {
         public Boolean profile_needs_agreement;
         public Profile profile;
-        public Boolean has_email;
+//        public Boolean has_email;   // Deprecated 수정해야함
         public Boolean email_needs_agreement;
         public Boolean is_email_valid;
         public Boolean is_email_verified;
