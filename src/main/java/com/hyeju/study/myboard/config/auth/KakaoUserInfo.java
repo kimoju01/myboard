@@ -5,7 +5,7 @@ import lombok.Data;
 @Data
 public class KakaoUserInfo {
 
-    public Integer id;
+    public Long id;
     public String connected_at;
     public Properties properties;
     public KakaoAccount kakao_account;
