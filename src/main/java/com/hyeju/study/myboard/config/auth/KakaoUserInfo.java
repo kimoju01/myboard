@@ -22,7 +22,7 @@ public class KakaoUserInfo {
     public class KakaoAccount {
         public Boolean profile_needs_agreement;
         public Profile profile;
-//        public Boolean has_email;   // Deprecated 수정해야함
+        public Boolean has_email;   // Deprecated 인데.. 왜 .. ?
         public Boolean email_needs_agreement;
         public Boolean is_email_valid;
         public Boolean is_email_verified;

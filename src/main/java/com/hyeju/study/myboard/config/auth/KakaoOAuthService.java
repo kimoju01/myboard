@@ -70,8 +70,8 @@ public class KakaoOAuthService {
         );  // => JSON 형식으로 응답온다
 
         // JSON 형태로 온 응답을 자바 객체로 바꿔주기
-//        ObjectMapper objectMapper = new ObjectMapper();
-        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
+        ObjectMapper objectMapper = new ObjectMapper();
+//        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
 //        KakaoOAuthToken kakaoOAuthToken;
         KakaoOAuthToken kakaoOAuthToken = null;
 
