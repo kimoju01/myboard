@@ -1,6 +1,7 @@
 package com.hyeju.study.myboard.config.auth;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.databind.DeserializationFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.hyeju.study.myboard.domain.member.Role;
 import com.hyeju.study.myboard.domain.member.repository.MemberRepository;
@@ -69,7 +70,8 @@ public class KakaoOAuthService {
         );  // => JSON 형식으로 응답온다
 
         // JSON 형태로 온 응답을 자바 객체로 바꿔주기
-        ObjectMapper objectMapper = new ObjectMapper();
+//        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectMapper objectMapper = new ObjectMapper().configure(DeserializationFeature.FAIL_ON_UNKNOWN_PROPERTIES,false);
 //        KakaoOAuthToken kakaoOAuthToken;
         KakaoOAuthToken kakaoOAuthToken = null;
 
