@@ -4,7 +4,8 @@
 ## 목차
 - [개요](#개요)
 - [기술 스택](#기술-스택)
-- [기능](#구현-기능)
+- [화면 소개](#화면-소개)
+- [주요 기능](#주요-기능)
 
 ## 개요
 - 프로젝트 이름: Hyeju-Board
@@ -15,10 +16,9 @@
 ### Front-end
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?&style=flat-square&logo=HTML5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?&style=flat-square&logo=CSS3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=flat-square&logo=JavaScript&logoColor=white) ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F.svg?&style=flat-square&logo=Thymeleaf&logoColor=white)
 ### Back-end
-![Java](http://is.am/5d5k) ![SpringBoot](https://img.shields.io/badge/SpringBoot-6DB33F.svg?&style=flat-square&logo=SpringBoot&logoColor=white) ![MySQL](https://img.shields.io/badge/MySQL-4479A1.svg?&style=flat-square&logo=MySQL&logoColor=white) ![Amazon-EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900.svg?&style=flat-square&logo=AmazonEC2&logoColor=white) ![Amazon-S3](https://img.shields.io/badge/Amazon%20S3-569A31.svg?&style=flat-square&logo=AmazonS3&logoColor=white)  
+![Java](http://is.am/5d5k) ![SpringBoot](https://img.shields.io/badge/SpringBoot-6DB33F.svg?&style=flat-square&logo=SpringBoot&logoColor=white) ![Spring-Data-JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=flat-square) ![Spring-Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=springsecurity&logoColor=white) ![Amazon-EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900.svg?&style=flat-square&logo=AmazonEC2&logoColor=white) ![Amazon-S3](https://img.shields.io/badge/Amazon%20S3-569A31.svg?&style=flat-square&logo=AmazonS3&logoColor=white)  
 
-## 구현 기능
-
+## 화면 소개
 <div align="center">
 
 |<img src="https://github.com/kimoju01/myboard/assets/43704446/4d721a54-433d-4ce3-a697-80e338f713a3" width="50%"/>|
@@ -38,3 +38,6 @@
 |글 작성 페이지|글 수정 페이지|
 
 </div>
+
+## 주요 기능
+
