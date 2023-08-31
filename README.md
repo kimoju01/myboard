@@ -16,7 +16,7 @@
 ### Front-end
 ![HTML5](https://img.shields.io/badge/HTML5-E34F26.svg?&style=flat-square&logo=HTML5&logoColor=white) ![CSS3](https://img.shields.io/badge/CSS3-1572B6.svg?&style=flat-square&logo=CSS3&logoColor=white) ![JavaScript](https://img.shields.io/badge/JavaScript-F7DF1E.svg?&style=flat-square&logo=JavaScript&logoColor=white) ![Thymeleaf](https://img.shields.io/badge/Thymeleaf-005F0F.svg?&style=flat-square&logo=Thymeleaf&logoColor=white)
 ### Back-end
-![Java](http://is.am/5d5k) ![SpringBoot](https://img.shields.io/badge/SpringBoot-6DB33F.svg?&style=flat-square&logo=SpringBoot&logoColor=white) ![Spring-Data-JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=flat-square) ![Spring-Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=springsecurity&logoColor=white) ![Amazon-EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900.svg?&style=flat-square&logo=AmazonEC2&logoColor=white) ![Amazon-S3](https://img.shields.io/badge/Amazon%20S3-569A31.svg?&style=flat-square&logo=AmazonS3&logoColor=white)  
+![Java](http://is.am/5d5k) ![SpringBoot](https://img.shields.io/badge/Spring_Boot-6DB33F.svg?&style=flat-square&logo=SpringBoot&logoColor=white) ![Spring-Data-JPA](https://img.shields.io/badge/Spring_Data_JPA-6DB33F?style=flat-square) ![Spring-Security](https://img.shields.io/badge/Spring_Security-6DB33F?style=flat-square&logo=springsecurity&logoColor=white) ![Amazon-EC2](https://img.shields.io/badge/Amazon%20EC2-FF9900.svg?&style=flat-square&logo=AmazonEC2&logoColor=white) ![Amazon-S3](https://img.shields.io/badge/Amazon%20S3-569A31.svg?&style=flat-square&logo=AmazonS3&logoColor=white)  
 
 ## 화면 소개
 <div align="center">
